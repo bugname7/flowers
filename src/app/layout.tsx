@@ -20,7 +20,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Florist Diyora",
   description: "Gullar va nafislik olami",
+  icons: {
+    icon: "/favicon.jpg",
+  },
 };
+
 
 export default function RootLayout({
   children,
@@ -30,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="uz">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-       
+
         <CartProvider>
           <LikeProvider>
             <Header />

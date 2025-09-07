@@ -15,7 +15,7 @@ export default function AboutPage() {
 
       <div className="flex justify-center gap-6 mb-10">
         <Flowers />
-        <Flowers />
+
       </div>
 
     </div>
