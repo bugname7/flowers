@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Flowers from "../components/Flowers";
 
 export const metadata: Metadata = {
   title: "Biz haqimizda — Florist Diyora",
@@ -7,9 +8,16 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="p-6">
-      <h1 className="text-2xl font-semibold">Biz haqimizda</h1>
-      <p>Florist Diyora — gul yetkazib berishda yetakchi kompaniya.</p>
-    </main>
+    <div className="container px-6 md:px-20 mx-auto">
+      <h2 className="font-mono text-3xl font-bold text-center mb-8">
+        Gullar onlayn do'koni
+      </h2>
+
+      <div className="flex justify-center gap-6 mb-10">
+        <Flowers />
+        <Flowers />
+      </div>
+
+    </div>
   );
 }
