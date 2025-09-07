@@ -1,18 +1,12 @@
-import type { Metadata } from "next";
-"use client";
+"use client"; // client hooks ishlashi uchun
 
 import { useCart } from "@/app/context/CartContext";
 import { useLike } from "@/app/context/LikeContext";
-export const metadata: Metadata = {
-  title: "Mahsulot — Florist Diyora",
-  description: "Florist Diyora mahsulotlari haqida batafsil ma’lumot",
-};
 
 interface ProductPageProps {
   params: { id: string };
 }
 
-// Demo uchun oddiy product list
 const products = [
   { id: 1, name: "Qizil Gullar", price: 50000, desc: "Romantik sovg‘a uchun ideal." },
   { id: 2, name: "Oq Liliya", price: 70000, desc: "Nafosat va sof tuyg‘ular ramzi." },
