@@ -4,7 +4,7 @@ import { useCart } from "@/app/context/CartContext";
 import { useLike } from "@/app/context/LikeContext";
 
 type ProductPageProps = {
-  params: Promise<{ id: string }>;
+  params: { id: string }; // ✅ oddiy obyekt, Promise emas
 };
 
 const products = [
@@ -13,13 +13,11 @@ const products = [
   { id: 3, name: "Tulpan", price: 45000, desc: "Bahoriy kayfiyat bag‘ishlaydi." },
 ];
 
-export default async function ProductPage({ params }: ProductPageProps) {
-  const { id } = await params; // ✅ Promise ni kutyapmiz
-
+export default function ProductPage({ params }: ProductPageProps) {
   const { addToCart } = useCart();
   const { toggleLike, likes } = useLike();
 
-  const product = products.find((p) => p.id.toString() === id);
+  const product = products.find((p) => p.id.toString() === params.id);
 
   if (!product) {
     return (
