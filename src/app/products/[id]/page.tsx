@@ -3,9 +3,10 @@
 import { useCart } from "@/app/context/CartContext";
 import { useLike } from "@/app/context/LikeContext";
 
-type ProductPageProps = {
+// ✅ Bu yerda hech qanday PageProps constraint ishlatmaymiz
+interface ProductPageProps {
   params: { id: string };
-};
+}
 
 const products = [
   { id: 1, name: "Qizil Gullar", price: 50000, desc: "Romantik sovg‘a uchun ideal." },
