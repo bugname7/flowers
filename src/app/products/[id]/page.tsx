@@ -1,4 +1,4 @@
-"use client"; // client hooks ishlashi uchun
+"use client";
 
 import { useCart } from "@/app/context/CartContext";
 import { useLike } from "@/app/context/LikeContext";
@@ -22,7 +22,7 @@ export default function ProductPage({ params }: ProductPageProps) {
   if (!product) {
     return (
       <main className="p-6">
-        <h1 className="text-2xl font-semibold">Mahsulot topilmadi ❌</h1>
+        <h1 className="text-2xl font-semibold text-red-600">❌ Mahsulot topilmadi</h1>
       </main>
     );
   }
@@ -33,18 +33,19 @@ export default function ProductPage({ params }: ProductPageProps) {
     <main className="p-6">
       <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
       <p className="text-gray-600 mb-4">{product.desc}</p>
-      <p className="text-lg font-semibold mb-6">{product.price} so'm</p>
+      <p className="text-lg font-semibold mb-6">{product.price.toLocaleString()} so'm</p>
 
       <div className="flex gap-4">
         <button
           onClick={() => addToCart(product)}
-          className="px-5 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+          className="px-5 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition"
         >
           🛒 Savatga qo‘shish
         </button>
+
         <button
           onClick={() => toggleLike(product)}
-          className={`px-5 py-2 rounded ${isLiked ? "bg-red-500 text-white" : "bg-gray-200"
+          className={`px-5 py-2 rounded transition ${isLiked ? "bg-red-500 text-white hover:bg-red-600" : "bg-gray-200 hover:bg-gray-300"
             }`}
         >
           {isLiked ? "❤️ Sevimlidan olib tashlash" : "🤍 Sevimlilarga qo‘shish"}
