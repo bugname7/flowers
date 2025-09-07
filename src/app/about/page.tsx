@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="container px-6 md:px-20 mx-auto">
+    <div className="container px-6 md:px-2 mx-auto">
       <h2 className="font-mono text-3xl font-bold text-center mb-8">
         Gullar onlayn do'koni
       </h2>
