@@ -4,7 +4,7 @@ import { useCart } from "@/app/context/CartContext";
 import { useLike } from "@/app/context/LikeContext";
 
 type ProductPageProps = {
-  params: { id: string }; // ✅ faqat oddiy obyekt
+  params: { id: string };
 };
 
 const products = [
@@ -17,7 +17,6 @@ export default function ProductPage({ params }: ProductPageProps) {
   const { addToCart } = useCart();
   const { toggleLike, likes } = useLike();
 
-  // params.id string -> product.id number
   const product = products.find((p) => p.id.toString() === params.id);
 
   if (!product) {
@@ -47,20 +46,12 @@ export default function ProductPage({ params }: ProductPageProps) {
         </button>
         <button
           onClick={() => toggleLike(product)}
-          className={`px-5 py-2 rounded transition ${
-            isLiked ? "bg-red-500 text-white" : "bg-gray-200"
-          }`}
+          className={`px-5 py-2 rounded transition ${isLiked ? "bg-red-500 text-white" : "bg-gray-200"
+            }`}
         >
           {isLiked ? "❤️ Sevimlidan olib tashlash" : "🤍 Sevimlilarga qo‘shish"}
         </button>
       </div>
     </main>
   );
-}
-
-// 🔹 Statik sahifa generatsiyasi (Vercel build uchun shart)
-export async function generateStaticParams() {
-  return products.map((p) => ({
-    id: p.id.toString(),
-  }));
 }
