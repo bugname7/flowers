@@ -10,9 +10,9 @@ export default function AosInit() {
 
     useEffect(() => {
         AOS.init({
-            duration: 900,
-            once: true, 
-            mirror: false,
+            duration: 1200,
+            once: false, 
+            mirror: true,
         });
     }, []);
 
@@ -20,5 +20,5 @@ export default function AosInit() {
         AOS.refresh();
     }, [pathname]);
 
-    return null; 
+    return null;
 }
