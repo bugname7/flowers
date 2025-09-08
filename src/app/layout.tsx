@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -6,6 +7,10 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { CartProvider } from "./context/CartContext";
 import { LikeProvider } from "./context/LikeContext";
+import AosInit from "./components/AosInit";
+
+
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,10 +32,12 @@ export const metadata: Metadata = {
 
 
 export default function RootLayout({
+
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="uz">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
@@ -38,6 +45,7 @@ export default function RootLayout({
         <CartProvider>
           <LikeProvider>
             <Header />
+            <AosInit />
             <main className="min-h-screen">{children}</main>
             <Footer />
           </LikeProvider>

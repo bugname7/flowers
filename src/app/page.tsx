@@ -5,6 +5,7 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
+
   return (
     <div className="mx-auto container">
       <div className="relative w-[550px]">
@@ -19,7 +20,7 @@ export default function HomePage() {
         </h1>
       </div>
       <div>
-        
+
       </div>
     </div>
   );
