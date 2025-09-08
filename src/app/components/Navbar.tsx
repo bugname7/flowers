@@ -15,8 +15,8 @@ export default function Navbar() {
           <Image
             src="/images/logo-image.png"
             alt="Florist Diyora logo"
-            width={160}  // minimal kenglik
-            height={60}  // minimal balandlik
+            width={160}  
+            height={60}  
             className="object-contain"
             priority
           />

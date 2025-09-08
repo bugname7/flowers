@@ -1,20 +1,16 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function ScrollToTop() {
-    const btnRef = useRef<HTMLButtonElement>(null);
+    const [isVisible, setIsVisible] = useState(false);
     const endRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (!endRef.current || !btnRef.current) return;
+        if (!endRef.current) return;
 
         const observer = new IntersectionObserver(
             ([entry]) => {
-                if (entry.isIntersecting) {
-                    btnRef.current!.style.display = "block";
-                } else {
-                    btnRef.current!.style.display = "none";
-                }
+                setIsVisible(entry.isIntersecting);
             },
             { threshold: 0.1 }
         );
@@ -30,15 +26,16 @@ export default function ScrollToTop() {
 
     return (
         <>
-            <div ref={endRef}   ></div> 
-            <button
-                ref={btnRef}
-                onClick={scrollToTop}
-                style={{ display: "none" }}
-                className="fixed bottom-10 right-10 bg-pink-200 cursor-pointer text-white p-3 rounded-full shadow-lg hover:bg-pink-600 transition"
-            >
-                🌸
-            </button>
+            <div ref={endRef}></div> {/* Sahifa oxiri */}
+            {isVisible && (
+                <button
+                    onClick={scrollToTop}
+                    className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8 bg-pink-200 cursor-pointer text-white p-3 rounded-full shadow-lg hover:bg-pink-600 transition"
+                >
+                    🌸
+                </button>
+
+            )}
         </>
     );
 }
