@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 export const metadata: Metadata = {
   title: "Florist Diyora — Bosh sahifa",
   description: "Gullar va nafislik olami",

@@ -25,28 +25,27 @@ export default function Navbar() {
 
         {/* Desktop menu */}
         <ul className="hidden md:flex gap-6 text-pink-900 font-medium items-center">
-          <li><Link href="/" className="font-mono font-medium text-pink-700">Bosh sahifa</Link></li>
-          <li><Link href="/catalog">Gullar</Link></li>
-          <li><Link href="/about">Biz haqimizda</Link></li>
-          <li><Link href="/contact">Kontaktlar</Link></li>
-          <li><Link href="/news">Yangiliklar</Link></li>
-          <li>
-            <Link href="/cart">
-              <Image src="/images/like.svg" alt="like icon" width={25} height={25} />
-            </Link>
-          </li>
+          <li><Link href="/" className="font-mono font-medium  text-pink-700">Bosh sahifa</Link></li>
+          <li><Link href="/catalog" className="font-mono font-medium  text-pink-700">Gullar</Link></li>
+          <li><Link href="/about" className="font-mono font-medium  text-pink-700">Biz haqimizda</Link></li>
+          <li><Link href="/contact" className="font-mono font-medium  text-pink-700">Kontaktlar</Link></li>
+          <li><Link href="/news" className="font-mono font-medium  text-pink-700">Yangiliklar</Link></li>
+
         </ul>
 
         {/* Desktop auth buttons */}
         <div className="hidden md:flex gap-4">
+          <Link href="/cart">
+            <Image src="/images/like.svg" alt="like icon" width={25} height={25} />
+          </Link>
           <Link href="/auth/login" className="text-sm text-pink-900 hover:underline">
             Kirish
           </Link>
           <Link
             href="/auth/register"
-            className="text-sm bg-pink-600 text-white px-3 py-1 rounded-lg hover:bg-pink-700 transition"
+            className=" bg-pink-600 font-mono text-white px-3 py-1 rounded-lg hover:bg-pink-700 transition"
           >
-            Ro‘yxatdan o‘tish
+            Royxatdan otish
           </Link>
         </div>
 
