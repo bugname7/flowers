@@ -10,7 +10,7 @@ export default function AboutPage() {
   return (
     <div className="container px-6 md:px-2 mx-auto">
       <h2 className="font-mono text-3xl font-bold text-center mb-8">
-        Gullar onlayn do'koni
+      🌸  Gullar onlayn do'koni
       </h2>
 
       <div className="flex justify-center gap-6 mb-10">
