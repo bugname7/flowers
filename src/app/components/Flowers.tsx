@@ -41,18 +41,18 @@ const Flowers = () => {
                 </div>
 
 
-                <div className="flex-1 text-justify min-w-[300px]" data-aos="zoom-in-left">
-                    <p className="font-mono leading-7 mb-2 sm:mb-8   font-medium">
+                <div className="flex-1 text-justify min-w-[300px]" >
+                    <p className="font-mono leading-7 mb-2 sm:mb-8   font-medium" data-aos="zoom-in-left">
                         🌸  Biz gullarni Farg‘ona viloyati, Quva tumanida uy sharoitida yasaladi va sotamiz!
                     </p>
-                    <p className="font-mono leading-6 font-medium mb-6">
+                    <p className="font-mono leading-6 font-medium mb-6" data-aos="fade-right">
                         🌸 Buyurtma berish uchun qulay va professional onlayn-do‘konimizdan foydalanishingiz mumkin.
                         Do‘konimiz barcha asosiy onlayn to‘lov usullarini qo‘llab-quvvatlaydi, va biz guldastalarni aniq tasvirlab, suratga olib taqdim etamiz.
                     </p>
-                    <p className="font-mono leading-7 mb-2 sm:mb-8 font-medium">
-                        🌸  Buyurtmalarni telefon, elektron pochta orqali qabul qilamiz.
+                    <p className="font-mono leading-7 mb-2 sm:mb-8 font-medium" data-aos="zoom-in-left">
+                        🌸  Buyurtmalarni oz vaqtida qilib berishga harakat qilamiz
                     </p>
-                    <p className="font-mono leading-7 mb-6 font-medium">
+                    <p className="font-mono leading-7 mb-6 font-medium" data-aos="fade-right">
                         🌸 Har bir guldasta ishtiyoq bilan yaratiladi va maxsus tanlangan gullardan yig‘iladi.
                         Biz mijozlarimiz bilan yaxshi aloqani, xushmuomalalikni va buyurtmalarning sifatli bajarilishini kafolatlaymiz.
                         Shuningdek, anonimlik va yordam ham ta’minlanadi.
@@ -69,18 +69,18 @@ const Flowers = () => {
             <div className="container flex flex-row gap-6 flex-wrap">
                 {/* Chap tarafdagi rasmlar */}
 
-                <div className="flex-1 text-justify min-w-[300px]" data-aos="fade-down-left">
+                <div className="flex-1 text-justify min-w-[300px]" >
                     <h3 className="font-mono leading-7 text-xl mb-2 sm:mb-8   font-bold " data-aos="fade-right">
                         🌸   Nima uchun bizning gul do'konimizdan foydalanasiz?
                     </h3>
-                    <p className="font-mono leading-6 font-medium mb-6" >
+                    <p className="font-mono leading-6 font-medium mb-6" data-aos="fade-left">
                         🌸 Buyurtma berish uchun qulay va professional onlayn-do‘konimizdan foydalanishingiz mumkin.
                         Do‘konimiz barcha asosiy onlayn to‘lov usullarini qo‘llab-quvvatlaydi, va biz guldastalarni aniq tasvirlab, suratga olib taqdim etamiz.
                     </p>
-                    <p className="font-mono leading-7 mb-2 sm:mb-8 font-medium" >
+                    <p className="font-mono leading-7 mb-2 sm:mb-8 font-medium" data-aos="fade-right">
                         🌸  Buyurtmalarni telefon, elektron pochta orqali qabul qilamiz.
                     </p>
-                    <p className="font-mono leading-7 mb-6 font-medium">
+                    <p className="font-mono leading-7 mb-6 font-medium" data-aos="fade-left"> 
                         🌸 Har bir guldasta ishtiyoq bilan yaratiladi va maxsus tanlangan gullardan yig‘iladi.
                         Biz mijozlarimiz bilan yaxshi aloqani, xushmuomalalikni va buyurtmalarning sifatli bajarilishini kafolatlaymiz.
                         Shuningdek, anonimlik va yordam ham ta’minlanadi.

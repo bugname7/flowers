@@ -12,31 +12,31 @@ export default function Map() {
             </div>
 
             <div
-                className="w-full md:w-1/3 bg-white shadow-xl p-6 md:p-8 mt-6 md:mt-0 md:ml-6"
+                className="w-full md:w-1/3 bg-white shadow-xl p-6 md:p-8 mt-6 md:mt-0 md:ml-6 cursor-pointer "
                 data-aos="flip-left"
                 data-aos-easing="ease-out-cubic"
                 data-aos-duration="2000"
             >
-                <div className="flex flex-col items-center text-center">
+                <div className="flex flex-col items-center text-center ">
                     <Image
                         src="/images/logo-image.png"
                         alt="Flowers Ukraine Logo"
                         width={180}
                         height={80}
                     />
-                    <h2 className="mt-2 text-lg md:text-xl font-semibold">
+                    <h2 className="mt-2 text-lg md:text-xl font-semibold font-mono">
                       🌸  FLOWERS-Diyora
                     </h2>
-                    <p className="text-gray-500 text-sm md:text-base">
+                    <p className="text-gray-500 text-sm md:text-base font-mono">
                     🌸 Eng jozibali gullar 
                     </p>
                 </div>
 
-                <div className="mt-6 space-y-4 text-gray-700 text-sm md:text-base">
-                    <p className="flex items-center gap-3">📞 +998 (94) 212 83 37</p>
+                <div className="mt-6 space-y-4 text-gray-700 text-sm md:text-base ">
+                    <p className="flex items-center gap-3 font-mono">📞 +998 (94) 212 83 37</p>
 
-                    <p className="flex items-center gap-3">💬 Skype: Flowers-Diyora</p>
-                    <p className="flex items-center gap-3">
+                    <p className="flex items-center gap-3 font-mono">💬 Skype: Flowers-Diyora</p>
+                    <p className="flex items-center gap-3 font-mono">
                         flowersdiyora@gmail.com
                     </p>
                 </div>

@@ -31,7 +31,7 @@ export default function Topbar() {
           </Link>
 
           <Link
-            href="/login"
+            href="/auth/  login"
             className="hover:text-pink-400 font-mono cursor-pointer text-center"
           >
             Kirish | Ro‘yxatdan o‘tish
