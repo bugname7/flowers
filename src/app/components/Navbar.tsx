@@ -117,13 +117,12 @@ export default function Navbar() {
         <ul className="md:hidden mt-4 px-6 pb-4 flex flex-col gap-3 text-pink-900 font-semibold bg-pink-50 shadow-inner">
           {[
             { href: "/", label: "🌸Bosh sahifa" },
-            { href: "/catalog", label: "🌸Katalog" },
-            { href: "/cart", label: "🌸Savat" },
+            { href: "/catalog", label: "🌸Gullar" },
             { href: "/about", label: "🌸Biz haqimizda" },
             { href: "/contact", label: "🌸Kontaktlar" },
             { href: "/news", label: "🌸Yangiliklar" },
-            { href: "/reviews", label: "🌸Sharhlar" },
-            { href: "/info/faq", label: "🌸FAQ" },
+
+
           ].map((link) => (
             <li key={link.href}>
               <Link
