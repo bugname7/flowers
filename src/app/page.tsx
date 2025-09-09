@@ -9,10 +9,10 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <div className="container mx-auto w-full px-4">
+    <div className="container mx-auto w-full px-8">
       {/* Hero section */}
       <div className="mx-auto container mb-8">
-        <div className="relative w-full max-w-[550px] h-[250px] md:h-[400px] lg:h-[500px] mx-auto">
+        <div className="relative w-full max-w-[500px] h-[200px] md:h-[400px] lg:h-[500px] mx-auto">
           <Image
             src="/images/3b1.jpg"
             alt="kelin gul"
@@ -20,7 +20,7 @@ export default function HomePage() {
             className="object-cover rounded-lg"
             priority
           />
-          <h1 className="absolute bottom-4 left-4 text-black font-bold font-mono text-sm md:text-lg lg:text-2xl">
+          <h1 className="absolute md:bottom-[390px] left-6 top-4 md:left-16 text-black font-bold font-mono text-sm md:text-lg lg:text-2xl">
             Uylaringizni <span className="text-pink-500 font-mono">chiroyli</span> qiladigan gullar 🌸 — har kuni <span className="text-pink-500 font-mono">yangi</span> kayfiyat!
           </h1>
         </div>

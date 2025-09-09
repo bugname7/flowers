@@ -6,8 +6,8 @@ export default function Topbar() {
     <div className="w-full bg-gray-900 text-gray-200 text-sm">
       <div className="container mx-auto flex flex-col md:flex-row justify-between px-6 py-2 gap-2 md:gap-0">
         {/* Chap tomondagi text */}
-        <div className="flex gap-2 md:gap-6 text-left items-center  ">
-          <span className="font-mono font-semibold   ">
+        <div className="flex gap-2 md:gap-6 text-left items-center">
+          <span className="font-mono font-semibold">
             Shahar: <b>Farg&apos;ona, Quva tumani</b>
           </span>
         </div>
@@ -41,13 +41,20 @@ export default function Topbar() {
             />
             Kontaktlar
           </Link>
-          <Link href={'/profile'} className=" bg-white text-black px-3 w-[110px] py-1 rounded-xl  font-mono   font-semibold   gap-2 flex "> <Image
-            src="/images/user.svg"
-            alt="likes image"
-            width={20}
-            height={20}
-            className="object-contain"
-          />Profil</Link>
+
+          <Link
+            href="/profile"
+            className="bg-white text-black px-3 py-1 rounded-xl font-mono font-semibold flex items-center justify-center gap-2 min-w-[110px] z-10 pointer-events-auto"
+          >
+            <Image
+              src="/images/user.svg"
+              alt="profile icon"
+              width={20}
+              height={20}
+              className="object-contain"
+            />
+            Profil
+          </Link>
         </div>
       </div>
     </div>
