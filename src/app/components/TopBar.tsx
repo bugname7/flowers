@@ -7,7 +7,7 @@ export default function Topbar() {
       <div className="container mx-auto flex flex-col md:flex-row justify-between px-6 py-2 gap-2 md:gap-0">
         {/* Chap tomondagi text */}
         <div className="flex gap-2 md:gap-6 text-left items-center  ">
-          <span className="font-mono">
+          <span className="font-mono font-semibold   ">
             Shahar: <b>Farg&apos;ona, Quva tumani</b>
           </span>
         </div>
@@ -16,7 +16,7 @@ export default function Topbar() {
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-6 text-left">
           <Link
             href="/likes"
-            className="hover:text-pink-400 font-mono cursor-pointer flex gap-2 items-center"
+            className="hover:text-pink-400 font-mono font-semibold cursor-pointer flex gap-2 items-center"
           >
             <Image
               src="/images/like.svg"
@@ -41,7 +41,7 @@ export default function Topbar() {
             />
             Kontaktlar
           </Link>
-          <Link href={'/profile'} className=" bg-white text-black px-3 py-1 rounded-xl  font-mono   font-medium   gap-2 flex "> <Image
+          <Link href={'/profile'} className=" bg-white text-black px-3 w-[110px] py-1 rounded-xl  font-mono   font-semibold   gap-2 flex "> <Image
             src="/images/user.svg"
             alt="likes image"
             width={20}
