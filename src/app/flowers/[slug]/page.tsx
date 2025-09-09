@@ -12,50 +12,29 @@ const flowers = [
     { id: 5, name: "Arxideya", slug: "arxideya", image: "/images/arxideya.jpg", description: 'O‘ziga jozibali' },
 ];
 
-// Page props tipi
-interface FlowerPageProps {
-    params: {
-        slug: string;
-    };
-}
-
-// Metadata generatsiyasi — async bo‘lishi kerak
-export async function generateMetadata({ params }: FlowerPageProps): Promise<Metadata> {
+// generateMetadata uchun async funksiyasi
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
     const flower = flowers.find(f => f.slug === params.slug);
-    if (!flower) {
-        return { title: "Gul topilmadi", description: "Bunday gul mavjud emas" };
-    }
+    if (!flower) return { title: "Gul topilmadi", description: "Bunday gul mavjud emas" };
     return { title: `${flower.name} — Florist Diyora`, description: flower.description };
 }
 
-// Slug asosida page — server component
-export default function FlowerPage({ params }: FlowerPageProps) {
+// Server Component
+export default function FlowerPage({ params }: { params: { slug: string } }) {
     const flower = flowers.find(f => f.slug === params.slug);
 
-    if (!flower) {
-        notFound(); // 404 sahifaga yo‘naltiradi
-    }
+    if (!flower) notFound(); // 404 sahifaga yo‘naltiradi
 
     return (
         <main className="p-6 max-w-lg mx-auto">
-            {/* Orqaga tugma */}
-            <Link
-                href="/catalog"
-                className="inline-block mb-4 text-pink-500 font-mono hover:underline"
-            >
+            <Link href="/catalog" className="inline-block mb-4 text-pink-500 font-mono hover:underline">
                 ← Orqaga
             </Link>
 
             <h1 className="text-2xl font-bold mb-4 font-mono text-pink-700">{flower.name}</h1>
 
             <div className="relative w-full h-64 mb-4 rounded-md overflow-hidden">
-                <Image
-                    src={flower.image}
-                    alt={flower.name}
-                    fill
-                    className="object-cover"
-                    priority
-                />
+                <Image src={flower.image} alt={flower.name} fill className="object-cover" priority />
             </div>
 
             <p className="font-mono text-gray-700">{flower.description}</p>
