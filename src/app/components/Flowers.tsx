@@ -4,9 +4,9 @@ const Flowers = () => {
     return (
         <div className="overflow-x-hidden"> {/* umumiy scrollni bloklaydi */}
             <div className="container mx-auto flex flex-row gap-6 flex-wrap">
-                <div className="flex flex-row gap-4 flex-1 min-w-[300px]">
+                <div className=" flex flex-row gap-4 flex-1 min-w-[300px]">
                     {/* Katta rasm */}
-                    <div className="w-1/2 h-[380px]" data-aos="fade-right">
+                    <div className="w-1/1 h-[380px]" data-aos="fade-right">
                         <Image
                             src="/images/white-arx.jpg"
                             alt="white arxideya"

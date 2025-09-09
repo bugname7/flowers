@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Map from "./components/Map";
+import ScrollToTop from "./components/ScrollToTop";
 
 export const metadata: Metadata = {
   title: "Florist Diyora — Bosh sahifa",
@@ -46,7 +47,7 @@ export default function HomePage() {
             src="/images/pochta.png"
             alt="Tez yetkazib berish"
             width={300}
-            height={200}
+            height={100}
             className="object-contain w-full h-[150px]"
           />
           <h3 className="font-mono font-semibold mt-2">🌸Tez yetkazib berish</h3>
@@ -126,7 +127,7 @@ export default function HomePage() {
       <div className="my-8">
         <h2 className="text-xl md:text-2xl font-bold font-mono mb-4 text-center" data-aos="zoom-out">🌸 Sun’iy gullar va dekoratsiya bo‘yicha maslahatlar</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-4 border rounded shadow hover:shadow-lg transition" data-aos="zoom-in-right">
+          <div className="p-4 border border-pink-500 rounded shadow hover:shadow-lg transition" data-aos="zoom-in-right">
             <Image src="/images/arxideya2.jpg" alt="arxidya 2image" width={400} height={200} className="object-cover w-full h-[250px]" />
             <h3 className="font-mono font-semibold mt-2">🌸Sun’iy gullarni uzoq vaqt yangi saqlash</h3>
             <ul className="text-sm font-mono mt-1 list-disc list-inside">
@@ -136,7 +137,7 @@ export default function HomePage() {
             </ul>
           </div>
 
-          <div className="p-4 border rounded shadow hover:shadow-lg transition" data-aos="zoom-in-left">
+          <div className="p-4 border border-pink-500 rounded shadow hover:shadow-lg transition" data-aos="zoom-in-left">
             <Image src="/images/siren-pink.jpg" alt="siren pink" width={400} height={200} className="object-cover rounded-md w-full h-[250px]" />
             <h3 className="font-mono font-semibold mt-2">🌸Uy bezaklarida sun’iy gullar kombinatsiyasi</h3>
             <ul className="text-sm font-mono mt-1 list-disc list-inside">
@@ -146,7 +147,7 @@ export default function HomePage() {
             </ul>
           </div>
 
-          <div className="p-4 border rounded shadow hover:shadow-lg transition" data-aos="zoom-in-right">
+          <div className="p-4 border border-pink-500    rounded shadow hover:shadow-lg transition" data-aos="zoom-in-right">
             <Image src="/images/married.jpg" alt="married image" width={400} height={200} className="object-cover w-full h-[250px]" />
             <h3 className="font-mono font-semibold mt-2"> 🌸Bayram va to‘y dekoratsiyasida sun’iy gullar</h3>
             <ul className="text-sm font-mono mt-1 list-disc list-inside">
@@ -175,6 +176,7 @@ export default function HomePage() {
       </div>
 
       {/* Map */}
+      <ScrollToTop />
       <Map />
     </div>
   );

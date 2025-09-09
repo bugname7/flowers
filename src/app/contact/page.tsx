@@ -43,7 +43,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="container mx-auto px-2">
+    <div className="container mx-auto px-4">
       <main className="max-w-3xl mx-auto p-6">
         <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} closeOnClick draggable pauseOnHover />
         <h1 className="text-3xl font-bold mb-6 text-center font-mono">🌸 Kontaktlar</h1>
