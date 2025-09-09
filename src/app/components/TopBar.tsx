@@ -41,6 +41,7 @@ export default function Topbar() {
             />
             Kontaktlar
           </Link>
+          <Link href={'/profile'} className="hover:text-pink-500">Profil</Link>
         </div>
       </div>
     </div>
