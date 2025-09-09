@@ -19,8 +19,8 @@ interface FlowerPageProps {
     };
 }
 
-// Metadata generatsiyasi — **async bo‘lmasligi kerak**
-export function generateMetadata({ params }: FlowerPageProps): Metadata {
+// Metadata generatsiyasi — async bo‘lishi kerak
+export async function generateMetadata({ params }: FlowerPageProps): Promise<Metadata> {
     const flower = flowers.find(f => f.slug === params.slug);
     if (!flower) {
         return { title: "Gul topilmadi", description: "Bunday gul mavjud emas" };
@@ -28,7 +28,7 @@ export function generateMetadata({ params }: FlowerPageProps): Metadata {
     return { title: `${flower.name} — Florist Diyora`, description: flower.description };
 }
 
-// Slug asosida page
+// Slug asosida page — server component
 export default function FlowerPage({ params }: FlowerPageProps) {
     const flower = flowers.find(f => f.slug === params.slug);
 
