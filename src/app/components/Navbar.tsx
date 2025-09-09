@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -38,17 +39,15 @@ export default function Navbar() {
     localStorage.removeItem("user");
     setUser(null);
     window.dispatchEvent(new Event("userChanged"));
-    setIsOpen(false); // mobile menu yopish
-  };
-
-  // har bir mobile link bosilganda menu yopish uchun
-  const handleLinkClick = () => {
     setIsOpen(false);
   };
 
+  const handleLinkClick = () => setIsOpen(false);
+
   return (
     <nav className="bg-pink-100 shadow-md mb-8">
-      <div className="container mx-auto px-4 flex justify-between items-center h-[70px]">
+      <div className="container mx-auto px-4 flex justify-between items-center h-[70px] relative">
+        {/* Logo */}
         <Link href="/" className="flex items-center" onClick={handleLinkClick}>
           <Image
             src="/images/logo-image.png"
@@ -60,6 +59,7 @@ export default function Navbar() {
           />
         </Link>
 
+        {/* Desktop menu */}
         <ul className="hidden md:flex gap-6 text-pink-900 font-medium items-center">
           <li><Link href="/" className="font-mono font-medium text-pink-700">🌸Bosh sahifa</Link></li>
           <li><Link href="/catalog" className="font-mono font-medium text-pink-700">🌸Gullar</Link></li>
@@ -68,11 +68,16 @@ export default function Navbar() {
           <li><Link href="/news" className="font-mono font-medium text-pink-700">🌸Yangiliklar</Link></li>
         </ul>
 
-        <div className="hidden md:flex gap-4 items-center">
+        <div className="flex gap-4 mr-10  md:mr-0 items-center absolute right-12 md:static">
           <Link href="/cart">
-            <Image src="/images/like.svg" alt="like icon" width={25} height={25} />
+            <Image src="/images/cart.svg" alt="cart icon" width={25} height={25} />
           </Link>
+          <Link href="/likes">
+            <Image src="/images/like1.svg" alt="like1 icon" width={25} height={25} />
+          </Link>
+        </div>
 
+        <div className="hidden md:flex gap-4 items-center">
           {user ? (
             <div className="flex items-center gap-3">
               <span className="font-medium font-mono text-pink-900 text-sm shadow-xl bg-pink-300 py-1 px-1 rounded-xl">

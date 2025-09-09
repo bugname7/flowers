@@ -12,7 +12,7 @@ export default function AboutPage() {
   return (
     <div className="container px-6 md:px-2 mx-auto">
       <h2 className="font-mono text-3xl font-bold text-center mb-8" data-aos="fade-up">
-        🌸  Gullar onlayn do'koni
+        🌸Flowers-Diyora onlayn gullar  do'koni
       </h2>
 
       <div className="pt-20 text-center  items-center">
