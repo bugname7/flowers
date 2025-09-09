@@ -126,7 +126,7 @@ export default function Navbar() {
                 </button>
               </div>
             ) : (
-              <Link href="/auth/login" className="font-mono font-medium text-pink-700">
+              <Link href="/auth/login" className="font-mono font-medium text-white bg-pink-800 py-1 px-3 rounded-xl hover:bg-pink-700">
                 Kirish
               </Link>
             )}
