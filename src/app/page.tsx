@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Map from "./components/Map";
+
 export const metadata: Metadata = {
   title: "Florist Diyora — Bosh sahifa",
   description: "Gullar va nafislik olami",
@@ -74,19 +75,78 @@ export default function HomePage() {
       <div className="my-8">
         <h2 className="text-xl md:text-2xl font-bold font-mono mb-4 text-center">🌸 So‘nggi yangiliklar</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="rounded overflow-hidden shadow-lg">
-            <Image src="/images/news1.jpg" alt="Yangilik 1" width={400} height={200} className="object-cover w-full h-[150px]" />
-            <div className="p-4">
+          <div className="rounded overflow-hidden shadow-lg" data-aos="fade-right">
+            <Image src="/images/lola.jpg" alt="Yangilik 1" width={400} height={200} className="object-cover w-full h-[200px]" />
+            <div className="p-4" >
               <h3 className="font-mono font-semibold">Bahor kolleksiyasi</h3>
-              <p className="text-sm mt-1">Yangi bahor gullari bilan uylaringizni bezating.</p>
+              <p className="text-sm font-mono font-medium mt-1">Yangi bahor gullari bilan uylaringizni bezating.</p>
             </div>
           </div>
-          <div className="rounded overflow-hidden shadow-lg">
-            <Image src="/images/news2.jpg" alt="Yangilik 2" width={400} height={200} className="object-cover w-full h-[150px]" />
+          <div className="rounded overflow-hidden shadow-lg" data-aos="fade-left">
+            <Image src="/images/kelinGul.jpg" alt="Yangilik 2" width={500} height={200} className="object-cover w-full h-[200px]" />
             <div className="p-4">
-              <h3 className="font-mono font-semibold">Bayram aksiyasi</h3>
-              <p className="text-sm mt-1">Har bir buyurtma uchun sovg‘a!</p>
+              <h3 className="font-mono font-semibold">Kelinlik gullari</h3>
+              <p className="text-sm font-mono font-medium mt-1">To‘y marosimida kelin kiyimi bilan uyg‘un keladigan gullardir</p>
             </div>
+          </div>
+          <div className="rounded overflow-hidden shadow-lg" data-aos="fade-right">
+            <Image src="/images/ramadan.jpg" alt="Yangilik 2" width={400} height={200} className="object-cover w-full h-[200px]" />
+            <div className="p-4">
+              <h3 className="font-mono font-semibold">Bayram gullari</h3>
+              <p className="text-sm font-mono font-medium mt-1">Bayram kunlarini bezash va quvonchni ifodalash uchun ishlatiladigan gullardir</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Blog / Maslahatlar */}
+      <div className="my-8">
+        <h2 className="text-xl md:text-2xl font-bold font-mono mb-4 text-center" data-aos="zoom-out">🌸 Sun’iy gullar va dekoratsiya bo‘yicha maslahatlar</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="p-4 border rounded shadow hover:shadow-lg transition" data-aos="zoom-in-right">
+            <Image src="/images/arxideya2.jpg" alt="arxidya 2image" width={400} height={200} className="object-cover w-full h-[250px]" />
+            <h3 className="font-mono font-semibold mt-2">🌸Sun’iy gullarni uzoq vaqt yangi saqlash</h3>
+            <ul className="text-sm font-mono mt-1 list-disc list-inside">
+              <li>Gullarni changdan toza tutish uchun yumshoq mato bilan artib turing.</li>
+              <li>Nam joyda saqlashdan saqlaning, bu rangning o‘zgarishiga olib kelishi mumkin.</li>
+              <li>Har yili yengil sovunli suv bilan yuvib, quritib qo‘ying.</li>
+            </ul>
+          </div>
+
+          <div className="p-4 border rounded shadow hover:shadow-lg transition" data-aos="zoom-in-left">
+            <Image src="/images/siren-pink.jpg" alt="siren pink" width={400} height={200} className="object-cover rounded-md w-full h-[250px]" />
+            <h3 className="font-mono font-semibold mt-2">🌸Uy bezaklarida sun’iy gullar kombinatsiyasi</h3>
+            <ul className="text-sm font-mono mt-1 list-disc list-inside">
+              <li>Ranglar uyg‘unligini hisobga oling.</li>
+              <li>Turli balandlikdagi gullarni aralashtiring.</li>
+              <li>Kerak bo‘lsa, dekorativ idish va aksessuarlar bilan bezang.</li>
+            </ul>
+          </div>
+
+          <div className="p-4 border rounded shadow hover:shadow-lg transition" data-aos="zoom-in-right">
+            <Image src="/images/married.jpg" alt="married image" width={400} height={200} className="object-cover w-full h-[250px]" />
+            <h3 className="font-mono font-semibold mt-2"> 🌸Bayram va to‘y dekoratsiyasida sun’iy gullar</h3>
+            <ul className="text-sm font-mono mt-1 list-disc list-inside">
+              <li>Rang-barang gullar bilan bayram kayfiyatini oshiring.</li>
+              <li>Kelinlik gullarini mavsumiy ranglar bilan uyg‘unlashtiring.</li>
+              <li>Sun’iy gullar bilan shaxsiy dizayn yaratish mumkin.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* FAQ / Tez-tez so‘raladigan savollar */}
+      <div className="my-8">
+        <h2 className="text-xl md:text-2xl font-bold font-mono mb-4 text-center" data-aos="zoom-in">❓ Tez-tez so‘raladigan savollar</h2>
+        <div className="space-y-4">
+
+          <div className="p-4 border border-pink-400 rounded shadow" data-aos="fade-up-right">
+            <h3 className="font-mono font-semibold">🌸 Gullarning yangi ekanligiga kafolat bormi?</h3>
+            <p className="text-sm font-mono mt-1">Ha, barcha gullarimiz har kuni yangilanadi va sifatga kafolat beriladi.</p>
+          </div>
+          <div className="p-4 border border-pink-400 rounded shadow" data-aos="fade-up-left">
+            <h3 className="font-mono font-semibold ">🌸 Maxsus dizayn buyurtma qilish mumkinmi?</h3>
+            <p className="text-sm font-mono mt-1">Albatta, sizning xohishingizga mos keladigan shaxsiy dizaynlar tayyorlaymiz.</p>
           </div>
         </div>
       </div>
