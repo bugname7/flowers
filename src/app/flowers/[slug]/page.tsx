@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     return { title: `${flower.name} — Florist Diyora`, description: flower.description };
 }
 
-// Server Component
+// Slug asosida server component
 export default function FlowerPage({ params }: { params: { slug: string } }) {
     const flower = flowers.find(f => f.slug === params.slug);
 
