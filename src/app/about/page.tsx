@@ -18,7 +18,7 @@ export default function AboutPage() {
       <div className="pt-20 text-center  items-center">
         <Flowers />
         <Map />
-        <ScrollToTop data-aos="zoom-in-up"/>
+        <ScrollToTop data-aos="zoom-in-up" />
 
       </div>
 
