@@ -13,14 +13,14 @@ const flowers = [
 ];
 
 // Page props tipi
-interface PageProps {
+interface FlowerPageProps {
     params: {
         slug: string;
     };
 }
 
-// Metadata generatsiyasi
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+// Metadata generatsiyasi — **async bo‘lmasligi kerak**
+export function generateMetadata({ params }: FlowerPageProps): Metadata {
     const flower = flowers.find(f => f.slug === params.slug);
     if (!flower) {
         return { title: "Gul topilmadi", description: "Bunday gul mavjud emas" };
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 // Slug asosida page
-export default function FlowerPage({ params }: PageProps) {
+export default function FlowerPage({ params }: FlowerPageProps) {
     const flower = flowers.find(f => f.slug === params.slug);
 
     if (!flower) {
