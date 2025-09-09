@@ -13,7 +13,9 @@ export default function HomePage() {
     <div className="container mx-auto w-full px-8">
       {/* Hero section */}
       <div className="mx-auto container mb-8">
-        <div className="relative w-full max-w-[500px] h-[200px] md:h-[400px] lg:h-[500px] mx-auto">
+        <div className="relative w-full max-w-[500px] h-[200px] md:h-[400px] lg:h-[500px] mx-auto" data-aos="flip-left"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000" >
           <Image
             src="/images/3b1.jpg"
             alt="kelin gul"
@@ -29,7 +31,7 @@ export default function HomePage() {
 
       {/* CTA */}
       <div className="text-center my-8">
-        <h2 className="text-xl md:text-2xl font-bold font-mono mb-4">
+        <h2 className="text-xl md:text-2xl font-bold font-mono mb-4" data-aos="fade-up">
           🌸 Eng so‘nggi gullarimizni kashf qiling!
         </h2>
         <Link href="/catalog" className="bg-pink-500 text-white py-2 px-6 rounded-md hover:bg-pink-600 font-mono transition">
@@ -39,22 +41,43 @@ export default function HomePage() {
 
       {/* Features / Afzalliklar */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8 text-center">
-        <div className="p-4 border rounded-lg shadow hover:shadow-lg transition">
-          <Image src="/images/fast-delivery.svg" alt="Tez yetkazib berish" width={60} height={60} />
-          <h3 className="font-mono font-semibold mt-2">Tez yetkazib berish</h3>
-          <p className="text-sm mt-1">Buyurtmangizni tezda yetkazib beramiz.</p>
+        <div className="p-4 border-2 border-pink-400 rounded-lg shadow hover:shadow-lg transition" data-aos="fade-up-right">
+          <Image
+            src="/images/pochta.png"
+            alt="Tez yetkazib berish"
+            width={300}
+            height={200}
+            className="object-contain w-full h-[150px]"
+          />
+          <h3 className="font-mono font-semibold mt-2">🌸Tez yetkazib berish</h3>
+          <p className="text-sm mt-1 font-mono  ">Buyurtmangizni yetkazib berish hizmatini ham yaqin kunlarda yo'lga qo'yamiz</p>
         </div>
-        <div className="p-4 border rounded-lg shadow hover:shadow-lg transition">
-          <Image src="/images/fresh-flowers.svg" alt="Yangi gullar" width={60} height={60} />
-          <h3 className="font-mono font-semibold mt-2">Yangi gullar</h3>
-          <p className="text-sm mt-1">Har kuni yangi gullar bilan ta’minlaymiz.</p>
+
+        <div className="p-4 border-2 border-pink-400 rounded-lg shadow hover:shadow-lg transition" data-aos="fade-up-left">
+          <Image
+            src="/images/flowers.jpg"
+            alt="Yangi gullar"
+            width={300}
+            height={200}
+            className="object-contain w-full h-[150px]"
+          />
+          <h3 className="font-mono font-semibold mt-2">🌸Yangi gullar</h3>
+          <p className="text-sm mt-1 font-mono">Har kuni yangi gullar bilan ta’minlaymiz.</p>
         </div>
-        <div className="p-4 border rounded-lg shadow hover:shadow-lg transition">
-          <Image src="/images/custom-design.svg" alt="Shaxsiy dizayn" width={60} height={60} />
-          <h3 className="font-mono font-semibold mt-2">Shaxsiy dizayn</h3>
-          <p className="text-sm mt-1">Sizning xohishingiz bo‘yicha gul bezaklari.</p>
+
+        <div className="p-4 border-2 border-pink-400 rounded-lg shadow hover:shadow-lg transition" data-aos="fade-up-right" >
+          <Image
+            src="/images/my.jpg"
+            alt="Shaxsiy dizayn"
+            width={300}
+            height={200}
+            className="object-contain w-full h-[150px]"
+          />
+          <h3 className="font-mono font-semibold mt-2">🌸Shaxsiy dizayn</h3>
+          <p className="text-sm mt-1 font-mono">Sizning xohishingiz bo‘yicha gul bezaklari.</p>
         </div>
       </div>
+
 
       {/* Testimonials */}
       <div className="my-8">
@@ -73,26 +96,26 @@ export default function HomePage() {
 
       {/* Latest News */}
       <div className="my-8">
-        <h2 className="text-xl md:text-2xl font-bold font-mono mb-4 text-center">🌸 So‘nggi yangiliklar</h2>
+        <h2 className="text-xl md:text-2xl font-bold font-mono mb-4 text-center" data-aos="zoom-out-up">🌸 So‘nggi yangiliklar</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="rounded overflow-hidden shadow-lg" data-aos="fade-right">
             <Image src="/images/lola.jpg" alt="Yangilik 1" width={400} height={200} className="object-cover w-full h-[200px]" />
             <div className="p-4" >
-              <h3 className="font-mono font-semibold">Bahor kolleksiyasi</h3>
+              <h3 className="font-mono font-semibold">🌸Bahor kolleksiyasi</h3>
               <p className="text-sm font-mono font-medium mt-1">Yangi bahor gullari bilan uylaringizni bezating.</p>
             </div>
           </div>
           <div className="rounded overflow-hidden shadow-lg" data-aos="fade-left">
             <Image src="/images/kelinGul.jpg" alt="Yangilik 2" width={500} height={200} className="object-cover w-full h-[200px]" />
             <div className="p-4">
-              <h3 className="font-mono font-semibold">Kelinlik gullari</h3>
+              <h3 className="font-mono font-semibold">🌸Kelinlik gullari</h3>
               <p className="text-sm font-mono font-medium mt-1">To‘y marosimida kelin kiyimi bilan uyg‘un keladigan gullardir</p>
             </div>
           </div>
           <div className="rounded overflow-hidden shadow-lg" data-aos="fade-right">
             <Image src="/images/ramadan.jpg" alt="Yangilik 2" width={400} height={200} className="object-cover w-full h-[200px]" />
             <div className="p-4">
-              <h3 className="font-mono font-semibold">Bayram gullari</h3>
+              <h3 className="font-mono font-semibold">🌸Bayram gullari</h3>
               <p className="text-sm font-mono font-medium mt-1">Bayram kunlarini bezash va quvonchni ifodalash uchun ishlatiladigan gullardir</p>
             </div>
           </div>
