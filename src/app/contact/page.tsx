@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Map from "../components/Map";
+
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
@@ -34,6 +35,7 @@ export default function ContactPage() {
         toast.error("Xatolik yuz berdi. Iltimos, qayta urinib ko'ring.");
       }
     } catch (error) {
+      console.error(error); // ixtiyoriy
       toast.error("Xatolik yuz berdi. Iltimos, qayta urinib ko'ring.");
     } finally {
       setLoading(false);
@@ -43,7 +45,7 @@ export default function ContactPage() {
   return (
     <div className="container mx-auto px-2">
       <main className="max-w-3xl mx-auto p-6">
-        <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
+        <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} closeOnClick draggable pauseOnHover />
         <h1 className="text-3xl font-bold mb-6 text-center font-mono">🌸 Kontaktlar</h1>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">

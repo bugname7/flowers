@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-
+import LoginForm from "./LoginForm";
+import Map from "../../components/Map"
 export const metadata: Metadata = {
   title: "Kirish — Florist Diyora",
   description: "Florist Diyora akkauntingizga kiring",
@@ -7,9 +8,10 @@ export const metadata: Metadata = {
 
 export default function LoginPage() {
   return (
-    <main className="p-6">
-      <h1 className="text-xl font-semibold">Kirish</h1>
-      <p>Login formasi shu yerda bo‘ladi.</p>
+    <main className="p-6 w-full mx-auto">
+     
+      <LoginForm />
+      <Map />
     </main>
   );
 }
