@@ -12,18 +12,39 @@ const flowers = [
     { id: 5, name: "Arxideya", slug: "arxideya", image: "/images/arxideya.jpg", description: 'O‘ziga jozibali' },
 ];
 
-// generateMetadata uchun async funksiyasi
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-    const flower = flowers.find(f => f.slug === params.slug);
-    if (!flower) return { title: "Gul topilmadi", description: "Bunday gul mavjud emas" };
-    return { title: `${flower.name} — Florist Diyora`, description: flower.description };
+// generateMetadata uchun props tipi
+type MetadataParams = {
+    params: { slug: string };
+};
+
+// Async yordamchi funksiya Promise qaytaradi
+async function getFlowerBySlug(slug: string) {
+    const flower = flowers.find(f => f.slug === slug);
+    return flower ? Promise.resolve(flower) : Promise.resolve(null);
 }
 
-// Slug asosida server component
-export default function FlowerPage({ params }: { params: { slug: string } }) {
-    const flower = flowers.find(f => f.slug === params.slug);
+// generateMetadata
+export async function generateMetadata({ params }: MetadataParams): Promise<Metadata> {
+    const flower = await getFlowerBySlug(params.slug);
 
-    if (!flower) notFound(); // 404 sahifaga yo‘naltiradi
+    if (!flower) {
+        return {
+            title: "Gul topilmadi",
+            description: "Bunday gul mavjud emas"
+        };
+    }
+
+    return {
+        title: `${flower.name} — Florist Diyora`,
+        description: flower.description
+    };
+}
+
+// Dynamic flower page
+export default async function FlowerPage({ params }: { params: { slug: string } }) {
+    const flower = await getFlowerBySlug(params.slug);
+
+    if (!flower) notFound(); // 404 sahifa uchun
 
     return (
         <main className="p-6 max-w-lg mx-auto">
