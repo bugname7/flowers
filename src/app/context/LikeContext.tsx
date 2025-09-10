@@ -1,27 +1,39 @@
 "use client";
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
-type Product = {
+type Flower = {
   id: number;
   name: string;
-  price: number;
+  slug: string;
+  image: string;
 };
 
 type LikeContextType = {
-  likes: Product[];
-  toggleLike: (product: Product) => void;
+  likes: Flower[];
+  toggleLike: (flower: Flower) => void;
 };
 
 const LikeContext = createContext<LikeContextType | undefined>(undefined);
 
 export function LikeProvider({ children }: { children: ReactNode }) {
-  const [likes, setLikes] = useState<Product[]>([]);
+  const [likes, setLikes] = useState<Flower[]>([]);
 
-  const toggleLike = (product: Product) => {
+  useEffect(() => {
+    const storedLikes = localStorage.getItem("likes");
+    if (storedLikes) {
+      setLikes(JSON.parse(storedLikes));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("likes", JSON.stringify(likes));
+  }, [likes]);
+
+  const toggleLike = (flower: Flower) => {
     setLikes((prev) =>
-      prev.some((item) => item.id === product.id)
-        ? prev.filter((item) => item.id !== product.id)
-        : [...prev, product]
+      prev.some((item) => item.id === flower.id)
+        ? prev.filter((item) => item.id !== flower.id)
+        : [...prev, flower]
     );
   };
 
