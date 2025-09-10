@@ -47,13 +47,10 @@ export default function Navbar() {
   const updateCart = () => {
     const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
     setCart(storedCart);
-   
   };
 
   useEffect(() => {
     updateCart(); // Initial load
-
-    // Cart o'zgarganda yangilash
     window.addEventListener("cartChanged", updateCart);
     return () => window.removeEventListener("cartChanged", updateCart);
   }, []);
@@ -84,9 +81,8 @@ export default function Navbar() {
           <li><Link href="/news" className="font-mono font-semibold text-pink-700">🌸Yangiliklar</Link></li>
         </ul>
 
-        {/* Cart + User */}
-        <div className="flex gap-4 mr-10 md:mr-0 items-center absolute right-12 md:static">
-         
+        {/* Cart + User (Desktop: user tashqarida) */}
+        <div className="hidden md:flex gap-4 items-center">
           <Link href="/cart" className="relative">
             <Image src="/images/cart.svg" alt="cart icon" width={25} height={25} />
             {cart.length > 0 && (
@@ -95,13 +91,12 @@ export default function Navbar() {
               </span>
             )}
           </Link>
-        </div>
 
-        {/* User */}
-        <div className="hidden md:flex gap-4 items-center">
           {user ? (
             <div className="flex items-center gap-3">
-              <span className="font-semibold font-mono text-sm shadow-xl bg-black text-white py-2 px-2 rounded-2xl">{user.name}</span>
+              <span className="font-semibold font-mono text-sm shadow-xl bg-black text-white py-2 px-2 rounded-2xl">
+                {user.name}
+              </span>
               <button
                 onClick={handleLogout}
                 className="text-sm text-black bg-white flex py-1 cursor-pointer px-2 rounded-xl shadow-xl font-mono"
@@ -117,10 +112,41 @@ export default function Navbar() {
           )}
         </div>
 
+        {/* Mobile toggle */}
         <button className="md:hidden text-pink-900 text-2xl" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
           {isOpen ? "✖" : "☰"}
         </button>
       </div>
+
+      {/* Mobile menu */}
+      {isOpen && (
+        <div className="md:hidden bg-pink-50 shadow-md px-4 pb-4 flex flex-col gap-4">
+          <Link href="/" className="font-mono font-semibold text-pink-700" onClick={handleLinkClick}>🌸Bosh sahifa</Link>
+          <Link href="/catalog" className="font-mono font-semibold text-pink-700" onClick={handleLinkClick}>🌸Gullar</Link>
+          <Link href="/about" className="font-mono font-semibold text-pink-700" onClick={handleLinkClick}>🌸Biz haqimizda</Link>
+          <Link href="/contact" className="font-mono font-semibold text-pink-700" onClick={handleLinkClick}>🌸Kontaktlar</Link>
+          <Link href="/news" className="font-mono font-semibold text-pink-700" onClick={handleLinkClick}>🌸Yangiliklar</Link>
+
+          {user ? (
+            <div className="flex items-center gap-3 mt-2">
+              <span className="font-semibold font-mono text-sm shadow-xl bg-black text-white py-2 px-8 rounded-2xl">
+                {user.name}
+              </span>
+              <button
+                onClick={handleLogout}
+                className="text-sm text-black bg-white flex py-1 cursor-pointer px-2 rounded-xl shadow-xl font-mono"
+              >
+                <Image src="/images/exit.svg" alt="exit image" width={20} height={20} className="object-contain" />
+                Chiqish
+              </button>
+            </div>
+          ) : (
+            <Link href="/auth/login" className="text-sm text-white bg-black hover:bg-gray-200 hover:text-black px-2 py-1 rounded-xl font-semibold font-mono">
+              Kirish
+            </Link>
+          )}
+        </div>
+      )}
     </nav>
   );
 }
