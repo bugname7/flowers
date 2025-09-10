@@ -2,11 +2,12 @@ import Image from "next/image"
 
 const Flowers = () => {
     return (
-        <div className="overflow-x-hidden"> {/* umumiy scrollni bloklaydi */}
-            <div className="container mx-auto flex flex-row gap-6 flex-wrap">
-                <div className=" flex flex-row gap-4 flex-1 min-w-[300px]">
+        <div className="overflow-x-hidden">
+            {/* Birinchi blok */}
+            <div className="container mx-auto w-full flex flex-row gap-6 flex-wrap">
+                <div className="flex flex-row gap-4 flex-1 min-w-[300px]">
                     {/* Katta rasm */}
-                    <div className="w-1/1 h-[380px]" data-aos="fade-right">
+                    <div className="w-full h-[380px]" data-aos="fade-right">
                         <Image
                             src="/images/white-arx.jpg"
                             alt="white arxideya"
@@ -17,7 +18,7 @@ const Flowers = () => {
                     </div>
 
                     {/* Ikki kichik rasm */}
-                    <div className="flex flex-col gap-4 w-1/2 h-[365px]">
+                    <div className="flex flex-col gap-4 basis-1/2 h-[365px]">
                         <div className="h-1/2" data-aos="fade-up">
                             <Image
                                 src="/images/lola.jpg"
@@ -39,6 +40,7 @@ const Flowers = () => {
                     </div>
                 </div>
 
+                {/* Matn qismi */}
                 <div className="flex-1 text-justify min-w-[300px]">
                     <p
                         className="font-mono leading-7 mb-2 sm:mb-8 font-medium"
@@ -74,6 +76,7 @@ const Flowers = () => {
                 </div>
             </div>
 
+            {/* O‘rta matn */}
             <div data-aos="zoom-out-right">
                 <h4 className="font-mono leading-7 mb-6 font-medium">
                     🌸 Siz Quvada guldastaga ishonch bilan buyurtma berishingiz mumkin,
@@ -83,6 +86,7 @@ const Flowers = () => {
                 </h4>
             </div>
 
+            {/* Ikkinchi blok */}
             <div className="container mx-auto flex flex-row gap-6 flex-wrap">
                 {/* Chap tarafdagi matn */}
                 <div className="flex-1 text-justify min-w-[300px]">
@@ -119,8 +123,8 @@ const Flowers = () => {
                 </div>
 
                 {/* O‘ng tarafdagi rasmlar */}
-                <div className="flex flex-row gap-4 flex-1 min-w-[300px]">
-                    <div className="flex flex-col gap-4 w-1/2 h-[365px]">
+                <div className="flex flex-row gap-4 flex-1 sm:min-w-[300px]">
+                    <div className="flex flex-col gap-4 basis-1/2 h-[365px]">
                         <div className="h-1/2" data-aos="zoom-in-right">
                             <Image
                                 src="/images/lola1.jpg"
@@ -141,7 +145,7 @@ const Flowers = () => {
                         </div>
                     </div>
 
-                    <div className="w-1/2 h-[380px]" data-aos="zoom-in-left">
+                    <div className="basis-1/2 h-[380px]" data-aos="zoom-in-left">
                         <Image
                             src="/images/arxideya.jpg"
                             alt="arxideya"
@@ -157,3 +161,4 @@ const Flowers = () => {
 }
 
 export default Flowers
+    

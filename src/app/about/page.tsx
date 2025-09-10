@@ -11,7 +11,7 @@ export default function AboutPage() {
 
   return (
     <div className="container px-6 md:px-2 mx-auto">
-      <h2 className="font-mono text-3xl font-bold text-center mb-8" data-aos="fade-up">
+      <h2 className="font-mono md:text-3xl lg:text-2xl text-xl font-bold text-center mb-0 md:mb-8 lg:mb-6" data-aos="fade-up">
         🌸Flowers-Diyora onlayn gullar  do'koni
       </h2>
 

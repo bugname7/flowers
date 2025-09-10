@@ -45,7 +45,7 @@ export default function Navbar() {
   const handleLinkClick = () => setIsOpen(false);
 
   return (
-    <nav className="bg-pink-100 shadow-md mb-8">
+    <nav className="bg-pink-100 shadow-md mb-8 w-full">
       <div className="container mx-auto px-4 flex justify-between items-center h-[70px] relative">
         {/* Logo */}
         <Link href="/" className="flex items-center" onClick={handleLinkClick}>

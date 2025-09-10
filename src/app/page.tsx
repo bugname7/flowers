@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <div className="container mx-auto w-full px-8">
+    <div className="container mx-auto w-full px-8 overflow-x-hidden">
       {/* Hero section */}
-      <div className="mx-auto container mb-8">
+      <div className="mx-auto mb-8">
         <div className="relative w-full max-w-[500px] h-[200px] md:h-[400px] lg:h-[500px] mx-auto" data-aos="flip-left"
           data-aos-easing="ease-out-cubic"
           data-aos-duration="2000" >

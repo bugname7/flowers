@@ -26,7 +26,7 @@ export default function ScrollToTop() {
 
     return (
         <>
-            <div ref={endRef}></div> {/* Sahifa oxiri */}
+            <div ref={endRef}></div> 
             {isVisible && (
                 <button
                     onClick={scrollToTop}
