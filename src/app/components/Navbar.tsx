@@ -81,8 +81,8 @@ export default function Navbar() {
           <li><Link href="/news" className="font-mono font-semibold text-pink-700">🌸Yangiliklar</Link></li>
         </ul>
 
-        {/* Cart + User (Desktop: user tashqarida) */}
-        <div className="hidden md:flex gap-4 items-center">
+        {/* Desktop: Cart + User */}
+        <div className=" md:flex gap-4 items-center">
           <Link href="/cart" className="relative">
             <Image src="/images/cart.svg" alt="cart icon" width={25} height={25} />
             {cart.length > 0 && (
@@ -111,6 +111,14 @@ export default function Navbar() {
             </Link>
           )}
         </div>
+        <Link href="/cart" className="relative mt-2">
+          <Image src="/images/cart.svg" alt="cart icon" width={25} height={25} />
+          {cart.length > 0 && (
+            <span className="absolute -top-2 -right-2 bg-pink-600 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center">
+              {cart.length}
+            </span>
+          )}
+        </Link>
 
         {/* Mobile toggle */}
         <button className="md:hidden text-pink-900 text-2xl" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
@@ -127,6 +135,10 @@ export default function Navbar() {
           <Link href="/contact" className="font-mono font-semibold text-pink-700" onClick={handleLinkClick}>🌸Kontaktlar</Link>
           <Link href="/news" className="font-mono font-semibold text-pink-700" onClick={handleLinkClick}>🌸Yangiliklar</Link>
 
+          {/* Mobile: Cart */}
+
+
+          {/* Mobile: User */}
           {user ? (
             <div className="flex items-center gap-3 mt-2">
               <span className="font-semibold font-mono text-sm shadow-xl bg-black text-white py-2 px-8 rounded-2xl">
