@@ -72,9 +72,7 @@ export default function Navbar() {
           <Link href="/cart">
             <Image src="/images/cart.svg" alt="cart icon" width={25} height={25} />
           </Link>
-          <Link href="/likes">
-            <Image src="/images/like1.svg" alt="like1 icon" width={25} height={25} />
-          </Link>
+          
         </div>
 
         <div className="hidden md:flex gap-4 items-center">

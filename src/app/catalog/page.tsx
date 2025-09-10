@@ -16,7 +16,7 @@ export default function CatalogPage() {
 
     return (
         <main className="p-6">
-            <h1 className="text-2xl font-semibold mb-4">📖 Katalog</h1>
+            <h1 className="text-2xl font-semibold font-mono text-center mb-4">🌸 Katalog</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {flowers.map((flower) => {
                     const isLiked = likes.some((item) => item.id === flower.id);
