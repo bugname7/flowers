@@ -11,28 +11,51 @@ interface User {
   password: string;
 }
 
+interface Flower {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+  desc: string;
+  slug: string;
+}
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
+  const [cart, setCart] = useState<Flower[]>([]);
 
+  // Userni o'qish
   useEffect(() => {
     if (typeof window !== "undefined") {
       const storedUser = localStorage.getItem("user");
-      if (storedUser) {
-        setUser(JSON.parse(storedUser));
-      }
+      if (storedUser) setUser(JSON.parse(storedUser));
 
       const handleUserChange = () => {
         const updatedUser = localStorage.getItem("user");
         setUser(updatedUser ? JSON.parse(updatedUser) : null);
       };
-
       window.addEventListener("userChanged", handleUserChange);
 
       return () => {
         window.removeEventListener("userChanged", handleUserChange);
       };
     }
+  }, []);
+
+  // Cartni o'qish va yangilash
+  const updateCart = () => {
+    const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    setCart(storedCart);
+   
+  };
+
+  useEffect(() => {
+    updateCart(); // Initial load
+
+    // Cart o'zgarganda yangilash
+    window.addEventListener("cartChanged", updateCart);
+    return () => window.removeEventListener("cartChanged", updateCart);
   }, []);
 
   const handleLogout = () => {
@@ -49,14 +72,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4 flex justify-between items-center h-[70px] relative">
         {/* Logo */}
         <Link href="/" className="flex items-center" onClick={handleLinkClick}>
-          <Image
-            src="/images/logo-image.png"
-            alt="Florist Diyora logo"
-            width={160}
-            height={60}
-            className="object-cover "
-            priority
-          />
+          <Image src="/images/logo-image.png" alt="Florist Diyora logo" width={160} height={60} className="object-cover" priority />
         </Link>
 
         {/* Desktop menu */}
@@ -68,30 +84,29 @@ export default function Navbar() {
           <li><Link href="/news" className="font-mono font-semibold text-pink-700">🌸Yangiliklar</Link></li>
         </ul>
 
-        <div className="flex gap-4 mr-10  md:mr-0 items-center absolute right-12 md:static">
-          <Link href="/cart">
+        {/* Cart + User */}
+        <div className="flex gap-4 mr-10 md:mr-0 items-center absolute right-12 md:static">
+         
+          <Link href="/cart" className="relative">
             <Image src="/images/cart.svg" alt="cart icon" width={25} height={25} />
+            {cart.length > 0 && (
+              <span className="absolute -top-2 -right-2 bg-pink-600 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center">
+                {cart.length}
+              </span>
+            )}
           </Link>
-          
         </div>
 
+        {/* User */}
         <div className="hidden md:flex gap-4 items-center">
           {user ? (
             <div className="flex items-center gap-3">
-              <span className="font-semibold font-mono  text-sm shadow-xl bg-black text-white py-2 px-2 rounded-2xl">
-                {user.name}
-              </span>
+              <span className="font-semibold font-mono text-sm shadow-xl bg-black text-white py-2 px-2 rounded-2xl">{user.name}</span>
               <button
                 onClick={handleLogout}
                 className="text-sm text-black bg-white flex py-1 cursor-pointer px-2 rounded-xl shadow-xl font-mono"
               >
-                <Image
-                  src="/images/exit.svg"
-                  alt="exit image"
-                  width={20}
-                  height={20}
-                  className="object-contain"
-                />
+                <Image src="/images/exit.svg" alt="exit image" width={20} height={20} className="object-contain" />
                 Chiqish
               </button>
             </div>
@@ -102,69 +117,10 @@ export default function Navbar() {
           )}
         </div>
 
-        <button
-          className="md:hidden text-pink-900 text-2xl"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-        >
+        <button className="md:hidden text-pink-900 text-2xl" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
           {isOpen ? "✖" : "☰"}
         </button>
       </div>
-
-      {isOpen && (
-        <ul className="md:hidden mt-4 px-6 pb-4 flex flex-col gap-3 text-pink-900 font-semibold bg-pink-50 shadow-inner">
-          {[
-            { href: "/", label: "🌸Bosh sahifa" },
-            { href: "/catalog", label: "🌸Gullar" },
-            { href: "/about", label: "🌸Biz haqimizda" },
-            { href: "/contact", label: "🌸Kontaktlar" },
-            { href: "/news", label: "🌸Yangiliklar" },
-
-
-          ].map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className="font-mono font-medium text-pink-700 block"
-                onClick={handleLinkClick}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-
-          <li>
-            {user ? (
-              <div className="flex flex-col gap-1">
-                <span className="font-mono font-semibold bg-black text-white  text-center py-2 px-1 rounded-xl w-[120px]">
-                  {user.name}
-                </span>
-                <button
-                  onClick={handleLogout}
-                  className="text-black flex bg-white shadow-md mt-4 font-mono font-semibold text-center py-2 px-1 rounded-xl w-[100px]"
-                >
-                  <Image
-                    src="/images/exit.svg"
-                    alt="exit image"
-                    width={20}
-                    height={20}
-                    className="object-contain"
-                  />
-                  Chiqish
-                </button>
-              </div>
-            ) : (
-              <Link
-                href="/auth/login"
-                className="font-mono font-medium text-white bg-black py-1 px-3 rounded-xl  block text-center"
-                onClick={handleLinkClick}
-              >
-                Kirish
-              </Link>
-            )}
-          </li>
-        </ul>
-      )}
     </nav>
   );
 }

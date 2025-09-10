@@ -27,8 +27,38 @@ export default function LoginForm() {
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
+    const validateForm = () => {
+        const { name, phone, password } = formData;
+
+        // Ism: bosh harfi katta va faqat harflar
+        if (!/^[A-ZА-ЯЁ][a-zA-Zа-яА-ЯёЁ]+$/.test(name)) {
+            toast.error("Ism bosh harfi katta bo‘lishi va faqat harflardan iborat bo‘lishi kerak!");
+            return false;
+        }
+
+        // Telefon: +998XXXXXXXXX formatida bo‘lishi kerak
+        if (!/^\+998\d{9}$/.test(phone)) {
+            toast.error("Telefon +998XXXXXXXXX formatida bo‘lishi kerak!");
+            return false;
+        }
+
+        // Parol: minimal 6 ta belgi, raqam va harf bo‘lishi tavsiya qilinadi
+        if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/.test(password)) {
+            toast.error("Parol kamida 6 ta belgidan iborat bo‘lishi va raqam ham harf bo‘lishi kerak!");
+            return false;
+        }
+
+        return true;
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        // Validatsiyani tekshirish
+        if (!validateForm()) {
+            return;
+        }
+
         setLoading(true);
 
         try {
@@ -38,12 +68,8 @@ export default function LoginForm() {
             );
 
             if (data) {
-                // 🔥 foydalanuvchini localStorage'ga saqlaymiz
                 localStorage.setItem("user", JSON.stringify(data));
-
-                // 🔥 Navbar darrov yangilanishi uchun event yuboramiz
                 window.dispatchEvent(new Event("userChanged"));
-
                 toast.success("✅ Muvaffaqiyatli kirdingiz!");
                 setTimeout(() => router.push("/"), 1000);
             } else {
@@ -73,9 +99,7 @@ export default function LoginForm() {
                 pauseOnHover
             />
             <div className="border-pink-400 md:border p-5 rounded-md shadow-xl">
-                <h1 className="text-2xl font-medium mb-4 text-center font-mono">
-                    🌸Kirish
-                </h1>
+                <h1 className="text-2xl font-medium mb-4 text-center font-mono">🌸Kirish</h1>
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                     <input
                         type="text"
@@ -91,17 +115,12 @@ export default function LoginForm() {
                         type="tel"
                         name="phone"
                         placeholder="🌸 Telefon raqam"
-                        value={
-                            formData.phone.startsWith("+998")
-                                ? formData.phone
-                                : "+998" + formData.phone.replace(/\D/g, "")
-                        }
+                        value={formData.phone}
                         onChange={(e) => {
-                            let val = e.target.value;
-                            if (!val.startsWith("+998")) {
-                                val = "+998" + val.replace(/\D/g, "");
-                            }
-                            setFormData((prev) => ({ ...prev, phone: val }));
+                            let val = e.target.value.replace(/\D/g, "");
+                            if (!val.startsWith("998")) val = "998" + val;
+                            if (val.length > 12) val = val.slice(0, 12);
+                            setFormData((prev) => ({ ...prev, phone: "+" + val }));
                         }}
                         className="border p-3 font-mono focus:ring-2 focus:ring-pink-500 focus:outline-none border-gray-300 rounded-md"
                         required

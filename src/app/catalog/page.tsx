@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useLike } from "../context/LikeContext";
 
 const flowers = [
@@ -16,7 +17,9 @@ export default function CatalogPage() {
 
     return (
         <main className="p-6">
-            <h1 className="text-2xl font-semibold font-mono text-center mb-4">🌸 Katalog</h1>
+            <h1 className="text-2xl font-semibold font-mono text-center mb-4">
+                🌸 Katalog
+            </h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {flowers.map((flower) => {
                     const isLiked = likes.some((item) => item.id === flower.id);
@@ -26,18 +29,19 @@ export default function CatalogPage() {
                             key={flower.id}
                             className="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition relative"
                         >
-                            <div className="relative w-full h-48">
-                                <Image
-                                    src={flower.image}
-                                    alt={flower.name}
-                                    fill
-                                    className="object-cover"
-                                />
-                            </div>
-
-                            <div className="p-2 text-center font-mono font-medium text-pink-700">
-                                {flower.name}
-                            </div>
+                            <Link href={`/flowers/${flower.slug}`}>
+                                <div className="relative w-full h-48">
+                                    <Image
+                                        src={flower.image}
+                                        alt={flower.name}
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
+                                <div className="p-2 text-center font-mono font-medium text-pink-700">
+                                    {flower.name}
+                                </div>
+                            </Link>
 
                             <button
                                 onClick={() => toggleLike(flower)}

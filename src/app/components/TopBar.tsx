@@ -9,55 +9,56 @@ export default function Topbar() {
 
   return (
     <div className="w-full bg-gray-900 text-gray-200 text-sm">
-      <div className="container mx-auto flex flex-col md:flex-row justify-between px-6 py-2 gap-2 md:gap-0">
-        {/* Chap tomondagi text */}
-        <div className="flex gap-2 md:gap-6 text-left items-center">
-          <span className="font-mono font-semibold">
+      <div className="container mx-auto flex flex-col md:flex-row justify-between px-6 py-2 gap-4 md:gap-0">
+
+        <div className="flex gap-2 md:gap-6  items-center">
+          <span className="font-mono font-semibold text-center">
             Shahar: <b>Farg&apos;ona, Quva tumani</b>
           </span>
         </div>
 
-        {/* O'ng tomondagi linklar */}
-        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 text-left items-center">
-          <Link
-            href="/likes"
-            className="hover:text-pink-400 font-mono font-semibold cursor-pointer flex gap-2 items-center relative"
-          >
-            {/* Like icon + Badge */}
-            <div className="relative">
+        <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6 w-full md:w-auto">
+
+          <div className="flex flex-row gap-28 md:gap-6 lg:gap-6 order-1 md:order-none">
+            <Link
+              href="/likes"
+              className="hover:text-pink-400 font-mono font-semibold cursor-pointer flex gap-2 items-center relative"
+            >
+              <div className="relative">
+                <Image
+                  src="/images/like.svg"
+                  alt="likes image"
+                  width={22}
+                  height={22}
+                  className="object-contain"
+                />
+                {likes.length > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-pink-600 text-white text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center shadow-md">
+                    {likes.length}
+                  </span>
+                )}
+              </div>
+              Sevimlilar
+            </Link>
+
+            <Link
+              href="/contact"
+              className="hover:text-pink-400 font-mono font-bold cursor-pointer flex gap-2 items-center"
+            >
               <Image
-                src="/images/like.svg"
-                alt="likes image"
-                width={22}
-                height={22}
+                src="/images/contact.svg"
+                alt="contact icon"
+                width={20}
+                height={20}
                 className="object-contain"
               />
-              {likes.length > 0 && (
-                <span className="absolute -top-2 -right-2 bg-pink-600 text-white text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center shadow-md">
-                  {likes.length}
-                </span>
-              )}
-            </div>
-            Sevimlilar
-          </Link>
-
-          <Link
-            href="/contact"
-            className="hover:text-pink-400 font-mono cursor-pointer flex gap-2 items-center"
-          >
-            <Image
-              src="/images/contact.svg"
-              alt="contact icon"
-              width={20}
-              height={20}
-              className="object-contain"
-            />
-            Kontaktlar
-          </Link>
+              Kontaktlar
+            </Link>
+          </div>
 
           <Link
             href="/profile"
-            className="bg-white text-black px-3 py-1 rounded-xl font-mono font-semibold flex items-center justify-center gap-2 min-w-[110px] z-10 pointer-events-auto"
+            className="bg-white text-black px-3 py-1 rounded-xl font-mono font-semibold flex items-center justify-center gap-2 hover:bg-gray-200 w-full md:w-auto z-10 pointer-events-auto order-2 md:order-none"
           >
             <Image
               src="/images/user.svg"
@@ -68,6 +69,7 @@ export default function Topbar() {
             />
             Profil
           </Link>
+
         </div>
       </div>
     </div>
