@@ -3,9 +3,10 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import Map from "../components/Map";
+import { Eye, EyeOff } from "lucide-react"; // 👈 lucide iconlar
 
 interface User {
   id: number;
@@ -75,8 +76,12 @@ export default function ProfilePage() {
     return (
       <div className="container w-full mx-auto p-5">
         <main className="p-6 text-center">
-          <h1 className="text-xl font-semibold mb-4 font-mono">🌸Mening profilim</h1>
-          <p className="text-red-600 mb-4 font-mono">⚠️ Siz login qilmagansiz!</p>
+          <h1 className="text-xl font-semibold mb-4 font-mono">
+            🌸Mening profilim
+          </h1>
+          <p className="text-red-600 mb-4 font-mono">
+            ⚠️ Siz login qilmagansiz!
+          </p>
           <Link
             href="/auth/login"
             className="bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-600 font-mono"
@@ -92,11 +97,22 @@ export default function ProfilePage() {
   return (
     <div className="container w-full mx-auto px-4">
       <main className="p-6 max-w-md mx-auto">
-        <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} closeOnClick draggable pauseOnHover />
-        <h1 className="text-xl font-semibold mb-4" data-aos="zoom-in-up">🌸Mening profilim</h1>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          closeOnClick
+          draggable
+          pauseOnHover
+        />
+        <h1 className="text-xl font-semibold mb-4" data-aos="zoom-in-up">
+          🌸Mening profilim
+        </h1>
 
         <div className="flex flex-col gap-4">
-          <input data-aos="zoom-in-up"
+          {/* Ism */}
+          <input
+            data-aos="zoom-in-up"
             type="text"
             name="name"
             value={formData.name}
@@ -104,7 +120,10 @@ export default function ProfilePage() {
             placeholder="🌸Ism"
             className="border p-3 rounded-md focus:ring-2 focus:ring-pink-500 focus:outline-none font-mono"
           />
-          <input data-aos="zoom-in-up"
+
+          {/* Telefon */}
+          <input
+            data-aos="zoom-in-up"
             type="tel"
             name="phone"
             value={formData.phone}
@@ -112,8 +131,11 @@ export default function ProfilePage() {
             placeholder="🌸Telefon raqam"
             className="border p-3 rounded-md focus:ring-2 focus:ring-pink-500 focus:outline-none font-mono"
           />
+
+          {/* Parol */}
           <div className="relative">
-            <input data-aos="zoom-in-up"
+            <input
+              data-aos="zoom-in-up"
               type={showPassword ? "text" : "password"}
               name="password"
               value={formData.password}
@@ -121,15 +143,19 @@ export default function ProfilePage() {
               placeholder="🌸Parol"
               className="border p-3 rounded-md focus:ring-2 focus:ring-pink-500 focus:outline-none font-mono w-full"
             />
-            <button data-aos="zoom-in-up"
+            <button
+              data-aos="zoom-in-up"
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-600 hover:text-gray-900 font-mono"
+              className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-600 hover:text-gray-900"
             >
-              {showPassword ? "🙈" : "👁️"}
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </button>
           </div>
-          <button data-aos="zoom-in-up"
+
+          {/* Saqlash tugmasi */}
+          <button
+            data-aos="zoom-in-up"
             onClick={handleSave}
             disabled={loading}
             className="bg-pink-500 text-white py-2 rounded-md hover:bg-pink-600 font-mono"

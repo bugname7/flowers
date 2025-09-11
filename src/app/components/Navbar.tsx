@@ -56,11 +56,16 @@ export default function Navbar() {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("user");
-    setUser(null);
-    window.dispatchEvent(new Event("userChanged"));
-    setIsOpen(false);
+    if (typeof window !== "undefined") {
+      localStorage.clear(); // 🔥 Hamma narsani o‘chiradi
+      setUser(null);        // user state-ni tozalaydi
+      setCart([]);          // cart state-ni bo‘shatadi
+      window.dispatchEvent(new Event("userChanged"));
+      window.dispatchEvent(new Event("cartChanged"));
+      setIsOpen(false);
+    }
   };
+
 
   const handleLinkClick = () => setIsOpen(false);
 
