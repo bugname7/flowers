@@ -28,7 +28,7 @@ export default function FlowerDetailPage() {
 
     const flower = flowers.find((f) => f.slug === slug);
 
-    if (!flower) return <p className="p-6">Gul topilmadi 🌸</p>;
+    if (!flower) return <p className="p-6 font-mono font-medium">Gul topilmadi 🌸</p>;
 
     const handleAddToCart = () => {
         const user = localStorage.getItem("user");
@@ -40,7 +40,7 @@ export default function FlowerDetailPage() {
             });
 
             setTimeout(() => {
-                router.push("http://localhost:3000/auth/login");
+                router.push("/auth/login");
             }, 1500);
 
             return; 
