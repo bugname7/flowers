@@ -106,11 +106,7 @@ export default function Navbar() {
               🌸Kontaktlar
             </Link>
           </li>
-          <li>
-            <Link href="/news" className="font-mono font-semibold text-pink-700">
-              🌸Yangiliklar
-            </Link>
-          </li>
+        
         </ul>
 
         {/* Desktop: Cart + User */}
@@ -191,9 +187,7 @@ export default function Navbar() {
           <Link href="/contact" className="font-mono font-semibold text-pink-700" onClick={handleLinkClick}>
             🌸Kontaktlar
           </Link>
-          <Link href="/news" className="font-mono font-semibold text-pink-700" onClick={handleLinkClick}>
-            🌸Yangiliklar
-          </Link>
+         
 
           {/* Mobile User */}
           {user ? (
