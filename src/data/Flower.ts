@@ -1,25 +1,24 @@
-// data/flower.ts
 export interface Flower {
     id: number;
     price: number;
     name: string;
     image: string;
-    desc: string; // desc qo‘shildi
+    desc: string;
     slug: string;
 }
 
 export const flowers: Flower[] = [
     {
         id: 1,
-        name: "Rosa",
-        slug: "rosa",
+        name: "Rosaa",
+        slug: "rosaa",
         image: "/images/kelinGul.jpg",
         desc: "Bu kelinning to‘yda qo‘lida tutadigan, sevgi va baxt ramzi bo‘lgan gulchambar.",
         price: 250000,
     },
     {
         id: 2,
-        name: "Lily",
+        name: "Lilya",
         slug: "lily",
         image: "/images/znak.jpg",
         desc: "Go‘zal oq gullar    ",
@@ -46,6 +45,14 @@ export const flowers: Flower[] = [
         name: "Arxideya",
         slug: "arxideya",
         image: "/images/arxideya.jpg",
+        desc: "Nozik va qimmatbaho gul",
+        price: 120000,
+    },
+    {
+        id: 6,
+        name: "Arxideya",
+        slug: "arxideya",
+        image: "/images/lola.jpg    ",
         desc: "Nozik va qimmatbaho gul",
         price: 120000,
     },
