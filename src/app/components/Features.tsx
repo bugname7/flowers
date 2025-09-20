@@ -12,7 +12,7 @@ function Features() {
                         className="object-contain w-full h-[150px]"
                     />
                     <h3 className="font-mono font-semibold mt-2">🌸Tez yetkazib berish</h3>
-                    <p className="text-sm mt-1 font-mono  ">Buyurtmangizni yetkazib berish hizmatini ham yaqin kunlarda yo'lga qo'yamiz</p>
+                    <p className="text-sm mt-1 font-mono  font-semibold">Buyurtmangizni yetkazib berish hizmatini ham yaqin kunlarda yo'lga qo'yamiz</p>
                 </div>
 
                 <div className="p-4 border-2 border-pink-400 rounded-lg shadow hover:shadow-lg transition" data-aos="fade-up-left">
@@ -24,7 +24,7 @@ function Features() {
                         className="object-contain w-full h-[150px]"
                     />
                     <h3 className="font-mono font-semibold mt-2">🌸Yangi gullar</h3>
-                    <p className="text-sm mt-1 font-mono">Har kuni yangi gullar bilan ta’minlaymiz.</p>
+                    <p className="text-sm mt-1 font-mono font-semibold">Har kuni yangi gullar bilan ta’minlaymiz.</p>
                 </div>
 
                 <div className="p-4 border-2 border-pink-400 rounded-lg shadow hover:shadow-lg transition" data-aos="fade-up-right" >
@@ -36,7 +36,7 @@ function Features() {
                         className="object-contain w-full h-[150px]"
                     />
                     <h3 className="font-mono font-semibold mt-2">🌸Shaxsiy dizayn</h3>
-                    <p className="text-sm mt-1 font-mono">Sizning xohishingiz bo‘yicha gul bezaklari.</p>
+                    <p className="text-sm mt-1 font-mono font-semibold">Sizning xohishingiz bo‘yicha gul bezaklari.</p>
                 </div>
             </div>
         </div>
