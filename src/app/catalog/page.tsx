@@ -11,7 +11,7 @@ export default function CatalogPage() {
     return (
         <main className="p-6">
             <h1 className="text-2xl font-semibold font-mono text-center mb-4">
-                🌸 Katalog
+                🌸 Gullar
             </h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
                 {flowers.map((flower: Flower) => {

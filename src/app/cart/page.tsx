@@ -29,26 +29,48 @@ export default function CartPage() {
     const updatedCart = cart.filter((item) => item.id !== id);
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
-
-    // Navbarni yangilash uchun event yuborish
     window.dispatchEvent(new Event("cartChanged"));
 
-    // Toast habar
     toast.info("Mahsulot savatdan o'chirildi 🗑️", {
       position: "top-right",
       autoClose: 2000,
     });
   };
 
-  const totalPrice = cart.reduce((acc, item) => acc + item.price, 0);
+  const sendToTelegram = async (item: Flower) => {
+    const token = "8425703443:AAGZMADPZJoTQzupxI8voxHzHhCd_uqpv6o";
+    const chatId = '6424874069'; // O'zingning chat ID
+    const message = `🌸 ${item.name}\n💰 Narxi: ${item.price.toLocaleString()} so'm\n📄 Tavsif: ${item.desc}`;
+
+    try {
+      await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message,
+        }),
+      });
+
+      toast.success("Buyurtma Telegram ga yuborildi! admin siz bilan boglanadi🌸", {
+        position: "top-right",
+        autoClose: 2500,
+      });
+    } catch (_) {
+      toast.error("Telegramga yuborishda xato 😢", {
+        position: "top-right",
+        autoClose: 2000,
+      });
+    }
+  };
 
   return (
     <div className="container w-full mx-auto">
-      {/* Toast container */}
       <ToastContainer />
-
       <main className="p-6 min-h-screen bg-pink-50">
-        <Link href={"/catalog"}>Orqaga</Link>
+        <Link href={"/catalog"} className="text-pink-600 hover:underline">
+          Orqaga
+        </Link>
         <h1 className="text-3xl font-bold text-pink-700 mb-6">🛒 Savat</h1>
 
         {cart.length === 0 ? (
@@ -78,18 +100,22 @@ export default function CartPage() {
                     💰 {item.price.toLocaleString()} so‘m
                   </p>
                 </div>
-                <button
-                  onClick={() => handleRemove(item.id)}
-                  className="bg-red-500 hover:bg-red-600 cursor-pointer text-white px-4 font-mono py-2 rounded-lg font-semibold transition"
-                >
-                  🗑️ O'chirish
-                </button>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => handleRemove(item.id)}
+                    className="bg-red-500 hover:bg-red-600 cursor-pointer text-white px-4 font-mono py-2 rounded-lg font-semibold transition"
+                  >
+                    🗑️ O'chirish
+                  </button>
+                  <button
+                    onClick={() => sendToTelegram(item)}
+                    className="bg-green-500 hover:bg-green-600 text-white px-4 font-mono py-2 rounded-lg font-semibold transition"
+                  >
+                    🌸 Buyurtma berish
+                  </button>
+                </div>
               </div>
             ))}
-
-            <div className="mt-4 text-right text-2xl font-bold font-mono text-pink-700">
-              Jami: {totalPrice.toLocaleString()} so‘m
-            </div>
           </div>
         )}
       </main>

@@ -3,7 +3,7 @@ import Flowers from "../components/Flowers";
 import Map from '../components/Map'
 import ScrollToTop from "../components/ScrollToTop";
 export const metadata: Metadata = {
-  title: "Biz haqimizda — Florist Diyora",
+  title: "Biz haqimizda ",
   description: "Florist Diyora haqida qisqacha ma’lumot",
 };
 
