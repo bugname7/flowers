@@ -17,12 +17,21 @@ interface Flower {
   slug: string;
 }
 
+interface User {
+  name: string;
+  phone: string;
+}
+
 export default function CartPage() {
   const [cart, setCart] = useState<Flower[]>([]);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
     setCart(storedCart);
+
+    const storedUser = JSON.parse(localStorage.getItem("user") || "null");
+    setUser(storedUser);
   }, []);
 
   const handleRemove = (id: number) => {
@@ -38,9 +47,23 @@ export default function CartPage() {
   };
 
   const sendToTelegram = async (item: Flower) => {
+    if (!user) {
+      toast.warning("Avval tizimga kiring 🌸", {
+        position: "top-right",
+        autoClose: 2500,
+      });
+      return;
+    }
+
     const token = "8425703443:AAGZMADPZJoTQzupxI8voxHzHhCd_uqpv6o";
-    const chatId = '6424874069'; // O'zingning chat ID
-    const message = `🌸 ${item.name}\n💰 Narxi: ${item.price.toLocaleString()} so'm\n📄 Tavsif: ${item.desc}`;
+    const chatId = '6424874069'; 
+    const message = ` 👤 Foydalanuvchi: ${user.name}
+📞 Telefon: ${user.phone}
+    🌸 ${item.name}
+   
+💰 Narxi: ${item.price.toLocaleString()} so'm
+📄 Tavsif: ${item.desc}
+`;
 
     try {
       await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
@@ -52,7 +75,7 @@ export default function CartPage() {
         }),
       });
 
-      toast.success("Buyurtma Telegram ga yuborildi! admin siz bilan boglanadi🌸", {
+      toast.success("Buyurtma Telegram ga yuborildi! Admin siz bilan bog'lanadi 🌸", {
         position: "top-right",
         autoClose: 2500,
       });
