@@ -66,7 +66,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed mb-30 top-29 md:top-11   left-0 w-full z-50  from-pink-200 to-pink-700 shadow-xl backdrop-blur-xl">
+      <nav className="fixed mb-30 top-20 md:top-11   left-0 w-full z-50  from-pink-200 to-pink-700 shadow-xl backdrop-blur-xl">
         <div className="container mx-auto px-4 flex justify-between items-center h-[80px] relative ">
           <Link href="/" className="flex items-center" onClick={handleLinkClick}>
             <Image
