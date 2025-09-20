@@ -29,13 +29,7 @@ export async function POST(req: NextRequest) {
 
         return NextResponse.json({ ok: true, result: data.result });
     } catch (error: unknown) {
-        if (error instanceof Error) {
-            console.error("Telegram API xato:", error.message);
-            return NextResponse.json({ error: "Telegramga yuborishda xato 😢" }, { status: 500 });
-        } else {
-            console.error("Telegram API xato:", error);
-            return NextResponse.json({ error: "Telegramga yuborishda noma’lum xato 😢" }, { status: 500 });
-        }
+        console.error("Telegram API xato:", error);
+        return NextResponse.json({ error: "Telegramga yuborishda xato 😢" }, { status: 500 });
     }
-
 }

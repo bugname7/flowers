@@ -70,17 +70,20 @@ export default function CartPage() {
 
       const data = await res.json();
 
-      if (data.ok) {
+      if (res.ok && data.ok) {
         toast.success("Buyurtma Telegram ga yuborildi! Admin siz bilan bog'lanadi 🌸", {
           position: "top-right",
           autoClose: 2500,
         });
       } else {
-        toast.error("Telegramga yuborishda xato 😢", { position: "top-right", autoClose: 2000 });
+        toast.error(data.error || "Telegramga yuborishda xato 😢", {
+          position: "top-right",
+          autoClose: 2500,
+        });
       }
     } catch (error) {
       console.error(error);
-      toast.error("Telegramga yuborishda xato 😢", { position: "top-right", autoClose: 2000 });
+      toast.error("Telegramga yuborishda xato 😢", { position: "top-right", autoClose: 2500 });
     }
   };
 
@@ -88,9 +91,13 @@ export default function CartPage() {
     <div className="container w-full mx-auto">
       <ToastContainer />
       <main className="p-6 min-h-screen bg-pink-50">
-        <Link href={"/catalog"} className="text-pink-400 font-mono font-semibold cursor-pointer bg-black py-2 px-3 rounded-xl  ">
+        <Link
+          href={"/catalog"}
+          className="text-pink-400 font-mono font-semibold cursor-pointer bg-black py-2 px-3 rounded-xl"
+        >
           Orqaga
         </Link>
+
         <h1 className="text-3xl font-mono font-bold text-pink-700 mt-8 mb-6">🛒 Savat</h1>
 
         {cart.length === 0 ? (
@@ -113,6 +120,7 @@ export default function CartPage() {
                 <div className="relative w-full md:w-1/4 h-48 rounded-lg overflow-hidden">
                   <Image src={item.image} alt={item.name} fill className="object-cover" />
                 </div>
+
                 <div className="flex-1 flex flex-col gap-2">
                   <h2 className="text-3xl font-mono font-bold text-pink-700">{item.name}</h2>
                   <p className="text-gray-600 font-mono font-medium">{item.desc}</p>
@@ -120,6 +128,7 @@ export default function CartPage() {
                     💰 {item.price.toLocaleString()} so‘m
                   </p>
                 </div>
+
                 <div className="flex flex-col md:flex-row gap-2 w-full md:w-auto">
                   <button
                     onClick={() => handleRemove(item.id)}
@@ -134,7 +143,6 @@ export default function CartPage() {
                     🌸 Buyurtma berish
                   </button>
                 </div>
-
               </div>
             ))}
           </div>
