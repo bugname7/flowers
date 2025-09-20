@@ -13,7 +13,7 @@ export default function CatalogPage() {
             <h1 className="text-2xl font-semibold font-mono text-center mb-4">
                 🌸 Gullar
             </h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:gap-12 lg:gap-10 gap-6">
                 {flowers.map((flower: Flower) => {
                     const isLiked = likes.some((item) => item.id === flower.id);
 
