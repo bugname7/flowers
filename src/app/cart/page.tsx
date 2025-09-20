@@ -55,35 +55,32 @@ export default function CartPage() {
       return;
     }
 
-    const token = "8425703443:AAGZMADPZJoTQzupxI8voxHzHhCd_uqpv6o";
-    const chatId = '6424874069'; 
-    const message = ` 👤 Foydalanuvchi: ${user.name}
+    const message = `👤 Foydalanuvchi: ${user.name}
 📞 Telefon: ${user.phone}
-    🌸 ${item.name}
-   
+🌸 ${item.name}
 💰 Narxi: ${item.price.toLocaleString()} so'm
-📄 Tavsif: ${item.desc}
-`;
+📄 Tavsif: ${item.desc}`;
 
     try {
-      await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      const res = await fetch("/api/sendTelegram", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          chat_id: chatId,
-          text: message,
-        }),
+        body: JSON.stringify({ message }),
       });
 
-      toast.success("Buyurtma Telegram ga yuborildi! Admin siz bilan bog'lanadi 🌸", {
-        position: "top-right",
-        autoClose: 2500,
-      });
-    } catch (_) {
-      toast.error("Telegramga yuborishda xato 😢", {
-        position: "top-right",
-        autoClose: 2000,
-      });
+      const data = await res.json();
+
+      if (data.ok) {
+        toast.success("Buyurtma Telegram ga yuborildi! Admin siz bilan bog'lanadi 🌸", {
+          position: "top-right",
+          autoClose: 2500,
+        });
+      } else {
+        toast.error("Telegramga yuborishda xato 😢", { position: "top-right", autoClose: 2000 });
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Telegramga yuborishda xato 😢", { position: "top-right", autoClose: 2000 });
     }
   };
 
@@ -91,10 +88,10 @@ export default function CartPage() {
     <div className="container w-full mx-auto">
       <ToastContainer />
       <main className="p-6 min-h-screen bg-pink-50">
-        <Link href={"/catalog"} className="text-pink-600 hover:underline">
+        <Link href={"/catalog"} className="text-pink-400 font-mono font-semibold cursor-pointer bg-black py-2 px-3 rounded-xl  ">
           Orqaga
         </Link>
-        <h1 className="text-3xl font-bold text-pink-700 mb-6">🛒 Savat</h1>
+        <h1 className="text-3xl font-mono font-bold text-pink-700 mt-8 mb-6">🛒 Savat</h1>
 
         {cart.length === 0 ? (
           <div className="flex flex-col items-center gap-4">
@@ -123,20 +120,21 @@ export default function CartPage() {
                     💰 {item.price.toLocaleString()} so‘m
                   </p>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex flex-col md:flex-row gap-2 w-full md:w-auto">
                   <button
                     onClick={() => handleRemove(item.id)}
-                    className="bg-red-500 hover:bg-red-600 cursor-pointer text-white px-4 font-mono py-2 rounded-lg font-semibold transition"
+                    className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-mono font-semibold transition w-full md:w-auto"
                   >
                     🗑️ O'chirish
                   </button>
                   <button
                     onClick={() => sendToTelegram(item)}
-                    className="bg-green-500 hover:bg-green-600 text-white px-4 font-mono py-2 rounded-lg font-semibold transition"
+                    className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-mono font-semibold transition w-full md:w-auto"
                   >
                     🌸 Buyurtma berish
                   </button>
                 </div>
+
               </div>
             ))}
           </div>
