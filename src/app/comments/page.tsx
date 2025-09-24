@@ -124,7 +124,7 @@ export default function CommentPage() {
                     />
                     <button
                         type="submit"
-                        className="bg-pink-500 text-white py-3 rounded-xl hover:bg-pink-600 transition-all duration-200 shadow-md font-semibold"
+                        className="bg-pink-500 text-white py-3 rounded-xl hover:bg-pink-600 font-mono cursor-pointer transition-all duration-200 shadow-md font-semibold"
                     >
                         {editId !== null ? "Tahrirlash" : "Izoh qoldirish"}
                     </button>
@@ -137,19 +137,19 @@ export default function CommentPage() {
                             className="p-4 border border-gray-200 rounded-xl flex flex-col md:flex-row justify-between items-start md:items-center bg-white shadow-sm transition-transform hover:scale-[1.01]"
                         >
                             <div className="mb-2 md:mb-0">
-                                <span className="font-bold text-pink-500">{c.userName}</span>: {c.message}
+                                <span className="font-bold font-mono text-pink-500">{c.userName}</span>: {c.message}
                                 <div className="text-gray-400 text-xs mt-1">{formatDate(c.timestamp)}</div>
                             </div>
                             {user && c.userName === user.name && (
                                 <div className="flex gap-3 mt-2 md:mt-0">
                                     <button
-                                        className="text-blue-500 hover:underline font-medium"
+                                        className="text-blue-500 hover:underline font-mono font-medium"
                                         onClick={() => handleEdit(c.id, c.message)}
                                     >
                                         Tahrirlash
                                     </button>
                                     <button
-                                        className="text-red-500 hover:underline font-medium"
+                                        className="text-red-500 hover:underline font-medium font-mono"
                                         onClick={() => handleDelete(c.id)}
                                     >
                                         O'chirish
