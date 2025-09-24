@@ -57,7 +57,10 @@ export default function CartPage() {
       return;
     }
 
-    const message = `👤 Foydalanuvchi: ${user.name}
+    const message = `
+    🆔 ID: ${item.id}
+👤 Foydalanuvchi: ${user.name}
+    
 📞 Telefon: ${user.phone}
 🌸 ${item.name}
 💰 Narxi: ${item.price.toLocaleString()} so‘m
@@ -74,7 +77,7 @@ export default function CartPage() {
 
       if (res.ok && data.ok) {
         toast.success(
-          `${item.name} buyurtmangiz Telegramga yuborildi! 🌸`,
+          `${item.name} buyurtmangiz Telegramga yuborildi! sizga aloqaga chiqamiz🌸`,
           { position: "top-right", autoClose: 2500 }
         );
       } else {
@@ -137,13 +140,13 @@ export default function CartPage() {
                 <div className="flex flex-col md:flex-row gap-2 w-full md:w-auto">
                   <button
                     onClick={() => handleRemove(item.id)}
-                    className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-mono font-semibold transition w-full md:w-auto"
+                    className="bg-red-500 hover:bg-red-600 cursor-pointer text-white px-4 py-2 rounded-lg font-mono font-semibold transition w-full md:w-auto"
                   >
                     🗑️ O'chirish
                   </button>
                   <button
                     onClick={() => sendSingleToTelegram(item)}
-                    className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-mono font-semibold transition w-full md:w-auto"
+                    className="bg-green-500 hover:bg-green-600 cursor-pointer text-white px-4 py-2 rounded-lg font-mono font-semibold transition w-full md:w-auto"
                   >
                     🌸 Buyurtma berish
                   </button>
