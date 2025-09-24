@@ -46,6 +46,8 @@ export default function HomePageClient() {
                     </div>
 
                     <div className="grid grid-cols-2 gap-4 w-full md:w-1/2">
+
+                        <Link href={'/comments'}>commmetn</Link>
                         <div className="relative w-full h-40 md:h-60">
                             <Image
                                 src="/images/arxideya1.jpg"

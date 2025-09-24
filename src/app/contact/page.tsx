@@ -1,13 +1,14 @@
 "use client";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
+
 import Map from "../components/Map";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
+    userName: "", // Telegram username
     message: "",
   });
   const [loading, setLoading] = useState(false);
@@ -30,12 +31,12 @@ export default function ContactPage() {
 
       if (response.ok) {
         toast.success("Xabaringiz muvaffaqiyatli yuborildi!");
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ name: "", userName: "", message: "" });
       } else {
         toast.error("Xatolik yuz berdi. Iltimos, qayta urinib ko'ring.");
       }
     } catch (error) {
-      console.error(error); // ixtiyoriy
+      console.error(error);
       toast.error("Xatolik yuz berdi. Iltimos, qayta urinib ko'ring.");
     } finally {
       setLoading(false);
@@ -59,10 +60,10 @@ export default function ContactPage() {
             required
           />
           <input
-            type="email"
-            name="email"
-            placeholder="🌸 Email"
-            value={formData.email}
+            type="text"
+            name="userName" // <-- bu yerini to'g'riladik
+            placeholder="🌸 Telegram username"
+            value={formData.userName}
             onChange={handleChange}
             className="p-3 border border-gray-300 font-mono rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
             required
