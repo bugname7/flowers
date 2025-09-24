@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 export default function Map() {
-    return ( 
+    return (
         <div className="w-full flex flex-col md:gap-14 md:flex-row items-center justify-center py-6 px-4 mt-20">
 
             <div className="w-full md:w-1/3 h-[300px] md:h-[500px] relative" data-aos="fade-right"
@@ -39,14 +39,25 @@ export default function Map() {
                     <p className="flex items-center gap-3 font-mono">
                         flowersdiyora@gmail.com
                     </p>
+                    <p> <a
+                         href="https://t.me/florist_diyora"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                         className="flex items-center gap-2 hover:text-pink-500 transition"
+                       >
+                         <Image
+                           src="/images/telegram.svg"
+                           alt="Telegram Kanal"
+                           width={40}
+                           height={40}
+                           className="bg-white rounded-full p-1 font-mono font-medium border text-xl"
+                         />
+                         Telegram
+                       </a></p>
                 </div>
 
-                <div className="flex gap-6 justify-center mt-6 text-gray-600 text-lg md:text-xl">
-                    <a href="#"><i className="fab fa-instagram"></i></a>
-                    <a href="#"><i className="fab fa-skype"></i></a>
-                    <a href="#"><i className="fab fa-telegram"></i></a>
-                    <a href="#"><i className="fab fa-facebook"></i></a>
-                </div>
+               
+
             </div>
         </div>
     );
