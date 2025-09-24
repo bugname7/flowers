@@ -50,7 +50,7 @@ export default function Map() {
                            alt="Telegram Kanal"
                            width={40}
                            height={40}
-                           className="bg-white rounded-full p-1 font-mono font-medium border text-xl"
+                           className="bg-white border-pink-500 rounded-full p-1 font-mono font-medium border-2 text-xl"
                          />
                          Telegram
                        </a></p>

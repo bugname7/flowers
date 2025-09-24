@@ -21,12 +21,11 @@ export default function Footer() {
       {/* Telegram kanali va admin lichkasi */}
       <div className="flex flex-col gap-4 items-center mt-6 text-white text-lg md:text-xl">
 
-       
         <a
           href="https://t.me/florist_diyora"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 hover:text-pink-500 transition"
+          className="flex items-center gap-2 hover:text-pink-500 transition font-mono font-medium"
         >
           <Image
             src="/images/telegram.svg"
@@ -38,7 +37,20 @@ export default function Footer() {
           Telegram
         </a>
 
-       
+        {/* Comment sahifasi linki */}
+        <Link
+          href="/comments"
+          className="flex items-center gap-2 hover:text-pink-500 transition font-mono font-medium"
+        >
+          <Image
+            src="/images/comments.svg" // agar icon bo‘lsa, yo‘q bo‘lsa olib tashlashingiz mumkin
+            alt="Sayt haqida fikrlar"
+            width={30}
+            height={30}
+            className="bg-white rounded-full p-1"
+          />
+          Sayt haqida fikrlar
+        </Link>
 
       </div>
 

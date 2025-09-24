@@ -88,7 +88,6 @@ export default function HomePageClient() {
                 >
                     Katalogga o‘tish
                 </Link>
-                <Link className="bg-pink-500 text-white py-2 px-6 rounded-md hover:bg-pink-600 font-mono transition ml-4" href={'/comments'}>commmentlar</Link>
             </div>
 
             <Features />
