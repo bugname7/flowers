@@ -6,7 +6,6 @@ import Link from "next/link";
 import ScrollToTop from "../components/ScrollToTop";
 import Map from "../components/Map";
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 interface Flower {
   id: number;
@@ -46,7 +45,10 @@ export default function CartPage() {
     });
   };
 
-  const sendToTelegram = async (item: Flower) => {
+  // Umumiy summani hisoblash
+  const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
+
+  const sendSingleToTelegram = async (item: Flower) => {
     if (!user) {
       toast.warning("Avval tizimga kiring 🌸", {
         position: "top-right",
@@ -58,7 +60,7 @@ export default function CartPage() {
     const message = `👤 Foydalanuvchi: ${user.name}
 📞 Telefon: ${user.phone}
 🌸 ${item.name}
-💰 Narxi: ${item.price.toLocaleString()} so'm
+💰 Narxi: ${item.price.toLocaleString()} so‘m
 📄 Tavsif: ${item.desc}`;
 
     try {
@@ -71,10 +73,10 @@ export default function CartPage() {
       const data = await res.json();
 
       if (res.ok && data.ok) {
-        toast.success("Buyurtma Telegram ga yuborildi! Admin siz bilan bog'lanadi 🌸", {
-          position: "top-right",
-          autoClose: 2500,
-        });
+        toast.success(
+          `${item.name} buyurtmangiz Telegramga yuborildi! 🌸`,
+          { position: "top-right", autoClose: 2500 }
+        );
       } else {
         toast.error(data.error || "Telegramga yuborishda xato 😢", {
           position: "top-right",
@@ -83,7 +85,10 @@ export default function CartPage() {
       }
     } catch (error) {
       console.error(error);
-      toast.error("Telegramga yuborishda xato 😢", { position: "top-right", autoClose: 2500 });
+      toast.error("Telegramga yuborishda xato 😢", {
+        position: "top-right",
+        autoClose: 2500,
+      });
     }
   };
 
@@ -137,7 +142,7 @@ export default function CartPage() {
                     🗑️ O'chirish
                   </button>
                   <button
-                    onClick={() => sendToTelegram(item)}
+                    onClick={() => sendSingleToTelegram(item)}
                     className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-mono font-semibold transition w-full md:w-auto"
                   >
                     🌸 Buyurtma berish
@@ -145,6 +150,11 @@ export default function CartPage() {
                 </div>
               </div>
             ))}
+
+            {/* Umumiy summa */}
+            <div className="mt-6 p-4 bg-pink-100 rounded-xl font-mono font-medium text-right  text-pink-700 text-xl">
+              Umumiy summa: 💰 {totalPrice.toLocaleString()} so‘m
+            </div>
           </div>
         )}
       </main>

@@ -15,7 +15,7 @@ export default function Topbar() {
          
 
           <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6 w-full md:w-auto">
-            <div className="flex flex-row gap-52   md:gap-6 lg:gap-6 order-1 md:order-none">
+            <div className="flex flex-row gap-26   md:gap-6 lg:gap-6 order-1 md:order-none">
               <Link
                 href="/likes"
                 className="hover:text-pink-400 font-mono font-semibold cursor-pointer flex gap-2 items-center relative"

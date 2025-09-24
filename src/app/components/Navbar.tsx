@@ -108,7 +108,7 @@ export default function Navbar() {
             <Link href="/cart" className="relative">
               <Image src="/images/cart.svg" alt="cart icon" width={28} height={28} />
               {cart.length > 0 && (
-                <span className="absolute -top-2 -right-2 bg-yellow-400 text-black text-xs w-5 h-5 rounded-full flex items-center justify-center shadow-md">
+                <span className="absolute -top-2 -right-2 bg-pink-500 text-white font-mono font-semibold text-xs w-5 h-5 rounded-full flex items-center justify-center shadow-md">
                   {cart.length}
                 </span>
               )}
@@ -142,7 +142,7 @@ export default function Navbar() {
             <Link href="/cart" className="relative">
               <Image src="/images/cart.svg" alt="cart icon" width={28} height={28} />
               {cart.length > 0 && (
-                <span className="absolute -top-2 -right-2 bg-yellow-400 text-black text-xs w-5 h-5 rounded-full flex items-center justify-center shadow-md">
+                <span className="absolute -top-2 -right-2 bg-pink-400 text-white font-mono font-semibold text-xs w-5 h-5 rounded-full flex items-center justify-center shadow-md">
                   {cart.length}
                 </span>
               )}
