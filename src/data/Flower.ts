@@ -112,4 +112,12 @@ export const flowers: Flower[] = [
         desc: "Ushbu sun’iy palmasimon gul bezak sifatida ishlatiladi va har doim yangi ko‘rinishda bo‘ladi. Barglari chiroyli va realistik qilib ishlab chiqilgan bo‘lib, xona yoki ofis dekoratsiyasini jonlantiradi. Parvarish talab qilmaydi va uzoq muddat davomida o‘z shakli va rangini saqlaydi.",
         price: 500000,
     },
+    {
+        id: 14,
+        name: "Sakura",
+        slug: "sakura1",
+        image: "/images/sakura1.jpg",
+        desc: "Bu sun’iy Sakura guli real gul kabi go‘zal va bezakli ko‘rinishga ega, lekin uzoq vaqt rangini yo‘qotmaydi va gullashi bilan sizga bahor hissini berib turadi. Ideal bezak, stol yoki sovg‘a uchun mos, parvarish talab qilmaydi va har doim yangi ko‘rinishda qoladi. Boshqa ranglari ham mavjud",
+        price: 500000,
+    },
 ];
