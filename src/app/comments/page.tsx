@@ -11,6 +11,7 @@ interface Comment {
     id: number;
     userName: string;
     message: string;
+    timestamp: string; // har doim mavjud
 }
 
 export default function CommentPage() {
@@ -27,24 +28,26 @@ export default function CommentPage() {
     useEffect(() => {
         setMounted(true);
         const storedUser = localStorage.getItem("user");
-        if (storedUser) {
-            setUser(JSON.parse(storedUser));
-        }
+        if (storedUser) setUser(JSON.parse(storedUser));
     }, []);
 
     // Login bo‘lmagan foydalanuvchi redirect
     useEffect(() => {
-        if (mounted && !user) {
-            router.replace("/auth/login");
-        }
+        if (mounted && !user) router.replace("/auth/login");
     }, [mounted, user, router]);
 
-    // Serverdan commentlarni olish
+    // Serverdan commentlarni olish va timestamp bo‘lmasa qo‘yish
     useEffect(() => {
         if (!mounted) return;
         fetch(COMMENTS_URL)
             .then(res => res.json())
-            .then(data => setComments(data))
+            .then((data: Comment[]) => {
+                const commentsWithTime = data.map(c => ({
+                    ...c,
+                    timestamp: c.timestamp || new Date().toISOString(),
+                }));
+                setComments(commentsWithTime);
+            })
             .catch(err => console.error(err));
     }, [mounted]);
 
@@ -57,7 +60,7 @@ export default function CommentPage() {
 
             if (editId !== null) {
                 // Edit comment
-                newComment = { id: editId, userName: user.name, message };
+                newComment = { id: editId, userName: user.name, message, timestamp: new Date().toISOString() };
                 await fetch(`${COMMENTS_URL}/${editId}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
@@ -67,7 +70,7 @@ export default function CommentPage() {
                 setEditId(null);
             } else {
                 // New comment
-                newComment = { id: Date.now(), userName: user.name, message };
+                newComment = { id: Date.now(), userName: user.name, message, timestamp: new Date().toISOString() };
                 await fetch(COMMENTS_URL, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -98,22 +101,28 @@ export default function CommentPage() {
 
     if (!mounted) return null;
 
-    return (
-        <div className="container mx-auto px-4 py-6">
-            <h1 className="text-3xl font-bold mb-6 text-center">💬 Sayt haqida fikrlar</h1>
+    // ISO vaqtni o'qiladigan formatga o'tkazish
+    const formatDate = (isoString: string) => {
+        const date = new Date(isoString);
+        return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+    };
 
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4 mb-6">
+    return (
+        <div className="container mx-auto px-4 py-8 max-w-4xl">
+            <h1 className="text-3xl md:text-4xl font-bold mb-8 text-center text-pink-500">💬 Sayt haqida fikrlar</h1>
+
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4 mb-8">
                 <textarea
-                    placeholder="🌸 Izohingiz"
+                    placeholder="🌸 Izohingizni yozing..."
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     rows={4}
-                    className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 resize-none"
+                    className="p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400 shadow-sm resize-none transition-all duration-200"
                     required
                 />
                 <button
                     type="submit"
-                    className="bg-pink-500 text-white py-3 rounded-md hover:bg-pink-600 transition-colors"
+                    className="bg-pink-500 text-white py-3 rounded-xl hover:bg-pink-600 transition-all duration-200 shadow-md font-semibold"
                 >
                     {editId !== null ? "Tahrirlash" : "Izoh qoldirish"}
                 </button>
@@ -121,20 +130,24 @@ export default function CommentPage() {
 
             <div className="flex flex-col gap-4">
                 {comments.map(c => (
-                    <div key={c.id} className="p-3 border border-gray-300 rounded-md flex justify-between items-center">
-                        <div>
+                    <div
+                        key={c.id}
+                        className="p-4 border border-gray-200 rounded-xl flex flex-col md:flex-row justify-between items-start md:items-center bg-white shadow-sm transition-transform hover:scale-[1.01]"
+                    >
+                        <div className="mb-2 md:mb-0">
                             <span className="font-bold text-pink-500">{c.userName}</span>: {c.message}
+                            <div className="text-gray-400 text-xs mt-1">{formatDate(c.timestamp)}</div>
                         </div>
                         {user && c.userName === user.name && (
-                            <div className="flex gap-2">
+                            <div className="flex gap-3 mt-2 md:mt-0">
                                 <button
-                                    className="text-blue-500 hover:underline"
+                                    className="text-blue-500 hover:underline font-medium"
                                     onClick={() => handleEdit(c.id, c.message)}
                                 >
                                     Tahrirlash
                                 </button>
                                 <button
-                                    className="text-red-500 hover:underline"
+                                    className="text-red-500 hover:underline font-medium"
                                     onClick={() => handleDelete(c.id)}
                                 >
                                     O'chirish

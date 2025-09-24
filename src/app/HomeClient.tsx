@@ -47,7 +47,7 @@ export default function HomePageClient() {
 
                     <div className="grid grid-cols-2 gap-4 w-full md:w-1/2">
 
-                        <Link href={'/comments'}>commmetn</Link>
+                        
                         <div className="relative w-full h-40 md:h-60">
                             <Image
                                 src="/images/arxideya1.jpg"
@@ -88,6 +88,7 @@ export default function HomePageClient() {
                 >
                     Katalogga o‘tish
                 </Link>
+                <Link className="bg-pink-500 text-white py-2 px-6 rounded-md hover:bg-pink-600 font-mono transition ml-4" href={'/comments'}>commmentlar</Link>
             </div>
 
             <Features />
