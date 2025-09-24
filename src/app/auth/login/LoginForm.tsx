@@ -39,7 +39,7 @@ export default function LoginForm() {
         const newErrors = { name: "", phone: "", password: "" };
 
         if (!/^[A-ZА-ЯЁ][a-zA-Zа-яА-ЯёЁ]+$/.test(name)) {
-            newErrors.name = "Ism bosh harfi katta bo‘lishi va faqat harflardan iborat bo‘lishi kerak!";
+            newErrors.name = "Ism bosh harfi katta bo‘lishi  kerak!";
             valid = false;
         }
 
@@ -48,8 +48,8 @@ export default function LoginForm() {
             valid = false;
         }
 
-        if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/.test(password)) {
-            newErrors.password = "Parol kamida 6 ta belgidan iborat va harf ham raqam bo‘lishi shart!";
+        if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$/.test(password)) {
+            newErrors.password = "Parol kamida 5 ta belgidan iborat  bo‘lishi shart!";
             valid = false;
         }
 
@@ -130,29 +130,29 @@ export default function LoginForm() {
                     </div>
 
                     {/* Parol */}
-                    <div className="relative">
-                        <input
-                            type={showPassword ? "text" : "password"}
-                            name="password"
-                            placeholder="🌸 Parol"
-                            value={formData.password}
-                            onChange={handleChange}
-                            className={`border p-3 font-mono rounded-md w-full ${
-                                errors.password ? "border-red-500" : "border-pink-400"
-                            }`}
-                            required
-                        />
-                        <button
-                            type="button"
-                            onClick={() => setShowPassword(!showPassword)}
-                            className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-600"
-                        >
-                            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                        </button>
-                        {errors.password && (
-                            <p className="text-red-500 text-sm mt-1">{errors.password}</p>
-                        )}
-                    </div>
+                        <div className="relative">
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                name="password"
+                                placeholder="🌸 Parol"
+                                value={formData.password}
+                                onChange={handleChange}
+                                className={`border p-3 font-mono rounded-md w-full ${
+                                    errors.password ? "border-red-500" : "border-pink-400"
+                                }`}
+                                required
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-600"
+                            >
+                                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                            </button>
+                            {errors.password && (
+                                <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+                            )}
+                        </div>
 
                     <button
                         type="submit"
