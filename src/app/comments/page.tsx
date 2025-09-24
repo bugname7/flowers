@@ -12,7 +12,7 @@ interface Comment {
     id: number;
     userName: string;
     message: string;
-    timestamp: string; // har doim mavjud
+    timestamp: string;
 }
 
 export default function CommentPage() {
@@ -22,22 +22,20 @@ export default function CommentPage() {
     const [message, setMessage] = useState("");
     const [comments, setComments] = useState<Comment[]>([]);
     const [editId, setEditId] = useState<number | null>(null);
+    const [loading, setLoading] = useState(false); // 🔑 tugma bosilganda kutish rejimi
 
     const COMMENTS_URL = "https://fdb4bf8077154ed1.mokky.dev/comments";
 
-    // Client-side tekshirish
     useEffect(() => {
         setMounted(true);
         const storedUser = localStorage.getItem("user");
         if (storedUser) setUser(JSON.parse(storedUser));
     }, []);
 
-    // Login bo‘lmagan foydalanuvchi redirect
     useEffect(() => {
         if (mounted && !user) router.replace("/auth/login");
     }, [mounted, user, router]);
 
-    // Serverdan commentlarni olish va timestamp bo‘lmasa qo‘yish
     useEffect(() => {
         if (!mounted) return;
         fetch(COMMENTS_URL)
@@ -56,11 +54,11 @@ export default function CommentPage() {
         e.preventDefault();
         if (!message || !user) return;
 
+        setLoading(true); // 🔑 tugma bosilganda bloklash
         try {
             let newComment: Comment;
 
             if (editId !== null) {
-                // Edit comment
                 newComment = { id: editId, userName: user.name, message, timestamp: new Date().toISOString() };
                 await fetch(`${COMMENTS_URL}/${editId}`, {
                     method: "PUT",
@@ -70,7 +68,6 @@ export default function CommentPage() {
                 setComments(prev => prev.map(c => (c.id === editId ? newComment : c)));
                 setEditId(null);
             } else {
-                // New comment
                 newComment = { id: Date.now(), userName: user.name, message, timestamp: new Date().toISOString() };
                 await fetch(COMMENTS_URL, {
                     method: "POST",
@@ -83,6 +80,8 @@ export default function CommentPage() {
             setMessage("");
         } catch (err) {
             console.error(err);
+        } finally {
+            setLoading(false); // 🔑 tugma yana faollashadi
         }
     };
 
@@ -102,7 +101,6 @@ export default function CommentPage() {
 
     if (!mounted) return null;
 
-    // ISO vaqtni o'qiladigan formatga o'tkazish
     const formatDate = (isoString: string) => {
         const date = new Date(isoString);
         return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
@@ -111,7 +109,7 @@ export default function CommentPage() {
     return (
         <div>
             <div className="container mx-auto px-4 py-8 max-w-4xl">
-                <h1 className="text-3xl md:text-4xl font-bold font-mono mb-8 text-center text-pink-500">Sayt haqida fikrlar</h1>
+                <h1 className="text-3xl md:text-4xl font-bold font-mono mb-8 text-center text-pink-500">Gullar haqida fikrlar</h1>
 
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4 mb-8">
                     <textarea
@@ -124,9 +122,13 @@ export default function CommentPage() {
                     />
                     <button
                         type="submit"
-                        className="bg-pink-500 text-white py-3 rounded-xl hover:bg-pink-600 font-mono cursor-pointer transition-all duration-200 shadow-md font-semibold"
+                        disabled={loading} 
+                        className={`py-3 rounded-xl font-mono font-semibold shadow-md transition-all duration-200 ${loading
+                                ? "bg-gray-400 cursor-not-allowed"
+                                : "bg-pink-500 hover:bg-pink-600 text-white cursor-pointer"
+                            }`}
                     >
-                        {editId !== null ? "Tahrirlash" : "Izoh qoldirish"}
+                        {loading ? "⏳ Kuting..." : editId !== null ? "Tahrirlash" : "Izoh qoldirish"}
                     </button>
                 </form>
 
@@ -143,13 +145,13 @@ export default function CommentPage() {
                             {user && c.userName === user.name && (
                                 <div className="flex gap-3 mt-2 md:mt-0">
                                     <button
-                                        className="text-blue-500 hover:underline font-mono font-medium"
+                                        className="text-blue-500 hover:underline font-mono font-medium cursor-pointer"
                                         onClick={() => handleEdit(c.id, c.message)}
                                     >
                                         Tahrirlash
                                     </button>
                                     <button
-                                        className="text-red-500 hover:underline font-medium font-mono"
+                                        className="text-red-500 hover:underline font-medium font-mono cursor-pointer"
                                         onClick={() => handleDelete(c.id)}
                                     >
                                         O'chirish
