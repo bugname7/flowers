@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import { Eye, EyeOff } from "lucide-react"; 
+import { Eye, EyeOff } from "lucide-react";
 
 interface User {
     id: number;
@@ -99,9 +99,8 @@ export default function LoginForm() {
                             placeholder="🌸 Ism"
                             value={formData.name}
                             onChange={handleChange}
-                            className={`border p-3 font-mono rounded-md w-full ${
-                                errors.name ? "border-red-500" : "border-pink-400"
-                            }`}
+                            className={`border p-3 font-mono rounded-md w-full ${errors.name ? "border-red-500" : "border-pink-400"
+                                }`}
                             required
                         />
                         {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
@@ -121,46 +120,77 @@ export default function LoginForm() {
                                 setFormData((prev) => ({ ...prev, phone: "+" + val }));
                                 setErrors((prev) => ({ ...prev, phone: "" }));
                             }}
-                            className={`border p-3 font-mono rounded-md w-full ${
-                                errors.phone ? "border-red-500" : "border-pink-400"
-                            }`}
+                            className={`border p-3 font-mono rounded-md w-full ${errors.phone ? "border-red-500" : "border-pink-400"
+                                }`}
                             required
                         />
                         {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
                     </div>
 
                     {/* Parol */}
-                        <div className="relative">
-                            <input
-                                type={showPassword ? "text" : "password"}
-                                name="password"
-                                placeholder="🌸 Parol"
-                                value={formData.password}
-                                onChange={handleChange}
-                                className={`border p-3 font-mono rounded-md w-full ${
-                                    errors.password ? "border-red-500" : "border-pink-400"
+                    <div className="relative">
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            name="password"
+                            placeholder="🌸 Parol"
+                            value={formData.password}
+                            onChange={handleChange}
+                            className={`border p-3 font-mono rounded-md w-full ${errors.password ? "border-red-500" : "border-pink-400"
                                 }`}
-                                required
-                            />
-                            <button
-                                type="button"
-                                onClick={() => setShowPassword(!showPassword)}
-                                className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-600"
-                            >
-                                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                            </button>
-                            {errors.password && (
-                                <p className="text-red-500 text-sm mt-1">{errors.password}</p>
-                            )}
-                        </div>
+                            required
+                        />
+                        <button
+                            type="button"
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-600"
+                        >
+                            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                        </button>
+                        {errors.password && (
+                            <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+                        )}
+                    </div>
 
-                    <button
-                        type="submit"
-                        disabled={loading}
-                        className="bg-pink-500 text-white py-2 rounded-md hover:bg-pink-600 transition cursor-pointer"
-                    >
-                        {loading ? "🌸Kirish..." : "🌸Kirish"}
-                    </button>
+                    <div className="relative w-full h-20 flex justify-center items-center overflow-hidden">
+                        <button
+                            type="submit"
+                            disabled={loading}
+                            onMouseEnter={(e) => {
+                                if (errors.name || errors.phone || errors.password) {
+                                    const btn = e.currentTarget;
+                                    const container = btn.parentElement;
+
+                                    if (!container) return;
+
+                                    const containerWidth = container.clientWidth;
+                                    const containerHeight = container.clientHeight;
+                                    const btnWidth = btn.offsetWidth;
+                                    const btnHeight = btn.offsetHeight;
+
+                                    const randomLeft = Math.floor(Math.random() * (containerWidth - btnWidth));
+                                    const randomTop = Math.floor(Math.random() * (containerHeight - btnHeight));
+
+                                    btn.style.position = "absolute";
+                                    btn.style.left = `${randomLeft}px`;
+                                    btn.style.top = `${randomTop}px`;
+                                } else {
+                                   
+                                    const btn = e.currentTarget;
+                                    btn.style.position = "static"; 
+                                    btn.style.left = "auto";
+                                    btn.style.top = "auto";
+                                }
+                            }}
+                            className="bg-pink-500 text-white py-2 px-6 rounded-md hover:bg-pink-600 cursor-pointer transition-all"
+                        >
+                            {loading ? "🌸Kirish..." : "🌸Kirish"}
+                        </button>
+                    </div>
+
+
+
+
+
                 </form>
             </div>
         </div>
